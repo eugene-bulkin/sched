@@ -85,17 +85,18 @@
                     </div>
                     <div class="timeFormContainer">
                         <div ng-repeat="time in class.times" class="timeForm">
-                        <span>From <input ng-model="time.start" data-time-picker class="timeInput"/> to
-                        <input ng-model="time.end" data-time-picker class="timeInput"/></span>
-                            <span>taught by <input ng-model="time.instructor"/> in <input
-                                    ng-model="time.location"/></span>
-                        <span>
-                            <label>M <input type="checkbox" ng-model="time.days[1]"/></label>
-                            <label>T <input type="checkbox" ng-model="time.days[2]"/></label>
-                            <label>W <input type="checkbox" ng-model="time.days[3]"/></label>
-                            <label>R <input type="checkbox" ng-model="time.days[4]"/></label>
-                            <label>F <input type="checkbox" ng-model="time.days[5]"/></label>
-                        </span>
+                            <span>From <input ng-model="time.start" data-time-picker class="timeInput"/> to
+                            <input ng-model="time.end" data-time-picker class="timeInput"/></span>
+                                <span>taught by <input ng-model="time.instructor"/> in <input
+                                        ng-model="time.location"/></span>
+                            <span>
+                                <label>M <input type="checkbox" ng-model="time.days[1]"/></label>
+                                <label>T <input type="checkbox" ng-model="time.days[2]"/></label>
+                                <label>W <input type="checkbox" ng-model="time.days[3]"/></label>
+                                <label>R <input type="checkbox" ng-model="time.days[4]"/></label>
+                                <label>F <input type="checkbox" ng-model="time.days[5]"/></label>
+                            </span>
+                            <!-- TODO: add way to remove times -->
                         </div>
                         <span class="add-time" ng-click="addTime($index)">+</span>
                     </div>

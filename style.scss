@@ -376,6 +376,8 @@ div.timeFormContainer {
     border-top: 1px solid #444;
 }
 
+// TODO: Style add-time class
+
 div.timeForm {
     margin: 2px;
     padding: 4px;
@@ -407,6 +409,8 @@ div.timeForm {
             outline: none;
         }
     }
+
+    // TODO: style checkbox area
 
     input.timeInput {
         @include timeFormFont;
