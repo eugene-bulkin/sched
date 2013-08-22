@@ -1,10 +1,10 @@
 function getBright(hex) {
     hex = hex.replace(/[^a-fA-F0-9]/g, '');
-    var r = parseInt(hex.substr(0,2),16),
-        g = parseInt(hex.substr(2,2),16),
-        b = parseInt(hex.substr(4,2),16);
+    var r = parseInt(hex.substr(0, 2), 16),
+        g = parseInt(hex.substr(2, 2), 16),
+        b = parseInt(hex.substr(4, 2), 16);
     // formula from http://alienryderflex.com/hsp.html
-    return Math.sqrt(0.299 * r * r +0.587 * g * g +0.114 * b * b);
+    return Math.sqrt(0.299 * r * r + 0.587 * g * g + 0.114 * b * b);
 }
 
 function getMins(time) {
@@ -24,12 +24,12 @@ var paletteColors = ["D94040", "FFA64D", "F2F249", "52CC52", "40A6D9", "4D4DBF",
 // return random item from array
 Array.prototype.choice = function () {
     return this[Math.floor(Math.random() * this.length)];
-}
+};
 
 // string padding for a Number
 Number.prototype.pad = function (width, z) {
     z = z || '0';
-    n = this + '';
+    var n = this + '';
     return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
 };
 
@@ -88,28 +88,31 @@ function SchedController($scope) {
     $scope.window = {start: "08:00", end: "23:00"};
 
     // resizing stuff
-    $scope.grid_width = $("#scheduleContainer").width();
-    $scope.grid_height = $("#scheduleContainer").height();
+    var schedContainer = $("#scheduleContainer");
+    $scope.grid_width = schedContainer.width();
+    $scope.grid_height = schedContainer.height();
 
     $scope.class_width = $scope.grid_width / $scope.days.length - 1;
 
     $scope.gridWidth = function () {
         return $("#scheduleContainer").width();
-    }
-    $scope.$watch($scope.gridWidth, function (newValue, oldValue) {
+    };
+    $scope.$watch($scope.gridWidth, function (newValue) {
         $scope.grid_width = newValue;
 
         $scope.class_width = $scope.grid_width / $scope.days.length - 1;
     });
+
     $scope.gridHeight = function () {
         return $("#scheduleContainer").height();
-    }
-    $scope.$watch($scope.gridHeight, function (newValue, oldValue) {
+    };
+    $scope.$watch($scope.gridHeight, function (newValue) {
         $scope.grid_height = newValue;
     });
+
     window.onresize = function () {
         $scope.$apply();
-    }
+    };
 
     $scope.timeAlign = function (t) {
         var start = getMins($scope.window.start),
@@ -119,15 +122,15 @@ function SchedController($scope) {
         return {
             top: ((getMins(t) - start) / 30 * tickSpacing - 4) + 'px'
         };
-    }
+    };
 
     $scope.timeTicks = function () {
         var t, result = [];
-        for(t = getMins($scope.window.start); t <= getMins($scope.window.end); t += 30) {
+        for (t = getMins($scope.window.start); t <= getMins($scope.window.end); t += 30) {
             result.push(toMins(t));
         }
         return result;
-    }
+    };
 
 
     $scope.classes = [
@@ -233,11 +236,11 @@ function ClassFormController($scope) {
 
     $scope.selectClass = function (i) {
         $scope.selectedClass = i;
-    }
+    };
 
     $scope.closeClass = function () {
         $scope.selectedClass = -1;
-    }
+    };
 
     $scope.addClass = function () {
         $scope.$parent.classes.push({
@@ -247,15 +250,15 @@ function ClassFormController($scope) {
             color: "#" + paletteColors.choice()
         });
 
-    }
+    };
 
     $scope.removeClass = function (i) {
         $scope.$parent.classes.splice(i, 1);
-    }
+    };
 
     $scope.addTime = function (i) {
         $scope.$parent.classes[i].times.push({days: {1: false, 2: false, 3: false, 4: false, 5: false}, start: "", end: "", location: "", instructor: ""})
-    }
+    };
 
     $scope.nameStyle = function (color) {
         var bright = getBright(color);
@@ -263,7 +266,7 @@ function ClassFormController($scope) {
             backgroundColor: color,
             color: (bright > 165) ? '#000000' : '#ffffff'
         };
-    }
+    };
 
     $scope.$on('classClick', function (event, args) {
         $scope.selectClass(args);

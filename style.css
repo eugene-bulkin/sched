@@ -1,11 +1,13 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: "Source Sans Pro", Tahoma, sans-serif; }
+    font-family: "Source Sans Pro", Tahoma, sans-serif;
+}
 
 html {
     background-color: #d9e6f2;
-    overflow: hidden; }
+    overflow: hidden;
+}
 
 #wrapper {
     position: absolute;
@@ -18,7 +20,8 @@ html {
     -webkit-transform: translate(-50%, 0%);
     -ms-transform: translate(-50%, 0%);
     transform: translate(-50%, 0%);
-    background-color: #ecf2f9; }
+    background-color: #ecf2f9;
+}
 
 #header {
     position: relative;
@@ -29,15 +32,17 @@ html {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    height: 16%; }
-    #header img {
-        height: 80%;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        -webkit-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%); }
+    height: 16%;
+}
+#header img {
+    height: 80%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
 
 #footer {
     position: absolute;
@@ -53,14 +58,16 @@ html {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    height: 2%; }
-    #footer span {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        -webkit-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%); }
+    height: 2%;
+}
+#footer span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
 
 #appContainer {
     position: absolute;
@@ -69,7 +76,8 @@ html {
     margin-left: -54px;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box; }
+    -moz-box-sizing: border-box;
+}
 
 #scheduleContainer {
     width: 45%;
@@ -82,7 +90,8 @@ html {
     transform: translate(0%, -50%);
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box; }
+    -moz-box-sizing: border-box;
+}
 
 div#grid {
     border-top: 1px solid #b3cce6;
@@ -91,65 +100,76 @@ div#grid {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 1; }
+    z-index: 1;
+}
 
 .tick {
     position: absolute;
     font-size: 12px;
-    line-height: 6px; }
+    line-height: 6px;
+}
 
 .tick:not(.line) {
     -webkit-transform: translate(calc(-100% - 5px), 0%);
     -ms-transform: translate(calc(-100% - 5px), 0%);
-    transform: translate(calc(-100% - 5px), 0%); }
+    transform: translate(calc(-100% - 5px), 0%);
+}
 
 .tick.line {
     padding-top: 4px;
     width: 100%;
-    left: 0%; }
-    .tick.line + .tick.line {
-        border-bottom: 1px solid #b3cce6; }
+    left: 0%;
+}
+.tick.line + .tick.line {
+    border-bottom: 1px solid #b3cce6;
+}
 
 .day {
     display: inline-block;
     height: 100%;
-    text-align: center; }
-    .day + .day {
-        border-left: 1px solid #b3cce6; }
-    .day .header {
-        position: absolute;
-        font-size: 13px;
-        line-height: 13px;
-        top: -15px;
-        width: inherit;
-        text-align: center; }
+    text-align: center;
+}
+.day + .day {
+    border-left: 1px solid #b3cce6;
+}
+.day .header {
+    position: absolute;
+    font-size: 13px;
+    line-height: 13px;
+    top: -15px;
+    width: inherit;
+    text-align: center;
+}
 
 div#classes {
     position: absolute;
     top: 0;
     left: 0;
     margin-top: 1px;
-    z-index: 2; }
-    div#classes .class {
-        cursor: pointer;
-        box-sizing: border-box;
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        position: absolute;
-        font-size: 12px;
-        font-weight: 400;
-        color: #fff;
-        text-align: center;
-        border-radius: 8px;
-        padding: 8px 2px; }
-        div#classes .class span {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            -webkit-transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-            width: calc(100% - 4px); }
+    z-index: 2;
+}
+div#classes .class {
+    cursor: pointer;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    position: absolute;
+    font-size: 12px;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    padding: 8px 2px;
+}
+div#classes .class span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: calc(100% - 4px);
+}
 
 #classesForm {
     box-sizing: border-box;
@@ -164,148 +184,172 @@ div#classes {
     height: 90%;
     right: 1%;
     overflow-y: auto;
-    overflow-x: hidden; }
-    #classesForm .class .name {
-        position: relative;
-        padding: 6px;
-        padding-left: 16px;
-        margin: 6px 0;
-        height: 36px;
-        border: 1px solid #b3cce6;
-        border-radius: 16px;
-        color: white;
-        font-size: 20px;
-        font-weight: bold;
-        cursor: pointer; }
-        #classesForm .class .name > div {
-            position: absolute;
-            top: 50%;
-            -webkit-transform: translate(0%, -50%);
-            -ms-transform: translate(0%, -50%);
-            transform: translate(0%, -50%);
-            box-sizing: border-box;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            width: calc(100% - 24px); }
-        #classesForm .class .name span {
-            display: inline-block;
-            font-size: 20px;
-            font-weight: bold;
-            position: absolute;
-            top: 50%;
-            -webkit-transform: translate(0%, -50%);
-            -ms-transform: translate(0%, -50%);
-            transform: translate(0%, -50%);
-            padding-left: 0px;
-            vertical-align: bottom;
-            box-sizing: border-box;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box; }
-        #classesForm .class .name button {
-            display: inline-block;
-            box-sizing: border-box;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            vertical-align: bottom;
-            font-size: 16px;
-            font-weight: bold;
-            line-height: 16px;
-            padding-bottom: 4px;
-            height: 32px;
-            width: 32px;
-            margin-right: 8px;
-            margin-top: 1px;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: #fff;
-            border: 1px solid #000;
-            border-radius: 12px;
-            cursor: pointer;
-            float: right; }
-            #classesForm .class .name button:hover {
-                background-color: rgba(0, 0, 0, 0.4);
-                border-width: 2px; }
-            #classesForm .class .name button:active {
-                background-color: rgba(0, 0, 0, 0.3); }
-    #classesForm .class .name.selected {
-        padding-left: 8px; }
-        #classesForm .class .name.selected input {
-            border: 1px solid #444;
-            height: 32px;
-            width: calc(100% - 24px - (32px + 2px));
-            font-size: 20px;
-            font-weight: bold;
-            padding: 6px;
-            padding-left: 7px;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            border-radius: 12px;
-            vertical-align: bottom;
-            box-sizing: border-box;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box; }
-            #classesForm .class .name.selected input:focus {
-                outline: none; }
-        #classesForm .class .name.selected div.colorPicker-picker {
-            box-sizing: border-box;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            vertical-align: bottom;
-            height: 32px;
-            width: 32px;
-            border-color: #444;
-            border-radius: 12px;
-            float: right; }
+    overflow-x: hidden;
+}
+#classesForm .class .name {
+    position: relative;
+    padding: 6px;
+    padding-left: 16px;
+    margin: 6px 0;
+    height: 36px;
+    border: 1px solid #b3cce6;
+    border-radius: 16px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+#classesForm .class .name > div {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(0%, -50%);
+    -ms-transform: translate(0%, -50%);
+    transform: translate(0%, -50%);
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: calc(100% - 24px);
+}
+#classesForm .class .name span {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(0%, -50%);
+    -ms-transform: translate(0%, -50%);
+    transform: translate(0%, -50%);
+    padding-left: 0px;
+    vertical-align: bottom;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+#classesForm .class .name button {
+    display: inline-block;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    vertical-align: bottom;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 16px;
+    padding-bottom: 4px;
+    height: 32px;
+    width: 32px;
+    margin-right: 8px;
+    margin-top: 1px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: 1px solid #000;
+    border-radius: 12px;
+    cursor: pointer;
+    float: right;
+}
+#classesForm .class .name button:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-width: 2px;
+}
+#classesForm .class .name button:active {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+#classesForm .class .name.selected {
+    padding-left: 8px;
+}
+#classesForm .class .name.selected input {
+    border: 1px solid #444;
+    height: 32px;
+    width: calc(100% - 24px - (32px + 2px));
+    font-size: 20px;
+    font-weight: bold;
+    padding: 6px;
+    padding-left: 7px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-radius: 12px;
+    vertical-align: bottom;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+#classesForm .class .name.selected input:focus {
+    outline: none;
+}
+#classesForm .class .name.selected div.colorPicker-picker {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    vertical-align: bottom;
+    height: 32px;
+    width: 32px;
+    border-color: #444;
+    border-radius: 12px;
+    float: right;
+}
 
 div.classDataFormContainer {
     margin: 2px;
     padding: 6px;
-    font-size: 14px; }
-    div.classDataFormContainer input {
-        font-size: 14px;
-        padding: 2px;
-        border: 1px solid #ccc;
-        border-radius: 4px; }
-        div.classDataFormContainer input:hover {
-            border-color: #bbb; }
-        div.classDataFormContainer input:focus {
-            border-color: #aaa;
-            outline: none; }
+    font-size: 14px;
+}
+div.classDataFormContainer input {
+    font-size: 14px;
+    padding: 2px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+div.classDataFormContainer input:hover {
+    border-color: #bbb;
+}
+div.classDataFormContainer input:focus {
+    border-color: #aaa;
+    outline: none;
+}
 
 div.timeFormContainer {
-    border-top: 1px solid #444; }
+    border-top: 1px solid #444;
+}
 
 div.timeForm {
     margin: 2px;
     padding: 4px;
-    font-size: 14px; }
-    div.timeForm + div.timeForm {
-        border-top: 1px solid #444; }
-    div.timeForm span {
-        margin: 2px;
-        display: block; }
-    div.timeForm input {
-        font-size: 14px;
-        padding: 2px;
-        border: 1px solid #ccc;
-        border-radius: 4px; }
-        div.timeForm input:hover {
-            border-color: #bbb; }
-        div.timeForm input:focus {
-            border-color: #aaa;
-            outline: none; }
-    div.timeForm input.timeInput {
-        font-size: 14px;
-        line-height: 16px;
-        width: 80px;
-        height: 30px;
-        box-sizing: border-box;
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        padding: 4px; }
+    font-size: 14px;
+}
+div.timeForm + div.timeForm {
+    border-top: 1px solid #444;
+}
+div.timeForm span {
+    margin: 2px;
+    display: block;
+}
+div.timeForm input {
+    font-size: 14px;
+    padding: 2px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+div.timeForm input:hover {
+    border-color: #bbb;
+}
+div.timeForm input:focus {
+    border-color: #aaa;
+    outline: none;
+}
+div.timeForm input.timeInput {
+    font-size: 14px;
+    line-height: 16px;
+    width: 80px;
+    height: 30px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    padding: 4px;
+}
 
 .ui-timepicker-wrapper {
     width: 80px;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    font-size: 14px; }
+    font-size: 14px;
+}
