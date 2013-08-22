@@ -109,16 +109,17 @@ div#grid {
     line-height: 6px;
 }
 
-.tick:not(.line) {
-    -webkit-transform: translate(calc(-100% - 5px), 0%);
-    -ms-transform: translate(calc(-100% - 5px), 0%);
-    transform: translate(calc(-100% - 5px), 0%);
+.tick.time {
+    left: -5px;
+    -webkit-transform: translate(-100%, 0%);
+    -ms-transform: translate(-100%, 0%);
+    transform: translate(-100%, 0%);
 }
 
 .tick.line {
     padding-top: 4px;
     width: 100%;
-    left: 0%;
+    left: 0;
 }
 .tick.line + .tick.line {
     border-bottom: 1px solid #b3cce6;

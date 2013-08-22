@@ -38,7 +38,7 @@
     <div id="appContainer">
         <div id="scheduleContainer">
             <div id="grid">
-                <span ng-repeat="t in timeTicks()" class="tick" ng-style="timeAlign(t)">{{ t }}</span>
+                <span ng-repeat="t in timeTicks()" class="tick time" ng-style="timeAlign(t)">{{ t }}</span>
                 <span ng-repeat="t in timeTicks()" class="tick line" ng-style="timeAlign(t)"></span>
 
                 <div ng-repeat="day in days" class="day" ng-style="{ width: class_width + 'px' }">
