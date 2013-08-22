@@ -76,7 +76,8 @@
                     <div class="name selected" ng-click="closeClass();"
                          ng-style="nameStyle(class.color)">
                         <div>
-                            <input ng-model="class.name" ng-required ng-click="$event.stopPropagation()"/>
+                            <input ng-model="class.name" ng-required ng-click="$event.stopPropagation()"
+                                   ng-style="nameStyle(class.color, false)"/>
                             <input ng-model="class.color" data-color-picker/>
                         </div>
                     </div>

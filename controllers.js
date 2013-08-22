@@ -260,12 +260,19 @@ function ClassFormController($scope) {
         $scope.$parent.classes[i].times.push({days: {1: false, 2: false, 3: false, 4: false, 5: false}, start: "", end: "", location: "", instructor: ""})
     };
 
-    $scope.nameStyle = function (color) {
-        var bright = getBright(color);
-        return {
-            backgroundColor: color,
-            color: (bright > 165) ? '#000000' : '#ffffff'
-        };
+    $scope.nameStyle = function (color, addBG) {
+        var bright = getBright(color),
+            result = {
+                color: (bright > 165) ? '#000000' : '#ffffff'
+            };
+        if(addBG === undefined) {
+            addBG = true;
+        }
+        if(addBG) {
+            result.backgroundColor = color;
+        }
+
+        return result;
     };
 
     $scope.$on('classClick', function (event, args) {
