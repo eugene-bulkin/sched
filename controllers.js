@@ -260,6 +260,10 @@ function ClassFormController($scope) {
         $scope.$parent.classes[i].times.push({days: {1: false, 2: false, 3: false, 4: false, 5: false}, start: "", end: "", location: "", instructor: ""})
     };
 
+    $scope.removeTime = function (ci, i) {
+        $scope.$parent.classes[ci].times.splice(i, 1);
+    };
+
     $scope.nameStyle = function (color, addBG) {
         var bright = getBright(color),
             result = {

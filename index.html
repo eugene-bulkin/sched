@@ -97,7 +97,7 @@
                                 <label>R <input type="checkbox" ng-model="time.days[4]"/></label>
                                 <label>F <input type="checkbox" ng-model="time.days[5]"/></label>
                             </span>
-                            <!-- TODO: add way to remove times -->
+                            <span class="rem-time" ng-click="removeTime($parent.$index, $index)">X</span>
                         </div>
                         <span class="add-time" ng-click="addTime($index)">+</span>
                     </div>

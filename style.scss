@@ -377,29 +377,9 @@ div.timeFormContainer {
     border-top: 1px solid #444;
 }
 
-.add-time {
-    display: block;
-    width: 15%;
-    margin: 0 auto;
-    text-align: center;
-    font-size: 1.5em;
-    border-radius: 4px;
-    color: #fff;
-
-    cursor: pointer;
-
-    background-color: #aaa;
-
-    &:hover {
-        background-color: #888;
-    }
-
-    &:active {
-        background-color: #666;
-    }
-}
-
 div.timeForm {
+    position: relative;
+
     margin: 2px;
     padding: 4px;
     @include timeFormFont;
@@ -442,6 +422,64 @@ div.timeForm {
         padding: 4px;
     }
 }
+
+.add-time {
+    display: block;
+    width: 15%;
+    margin: 0 auto;
+    text-align: center;
+    font: {
+        size: 1.5em;
+        weight: bold;
+    }
+    border-radius: 4px;
+    color: #fff;
+
+    cursor: pointer;
+
+    background-color: #aaa;
+
+    margin-top: 4px;
+
+    &:hover {
+        background-color: #888;
+    }
+
+    &:active {
+        background-color: #666;
+    }
+}
+
+.rem-time {
+    display: block;
+    width: 5%;
+    margin: 0 auto;
+    text-align: center;
+    font: {
+        size: 1.5em;
+        weight: bold;
+    }
+    line-height: 1.5em;
+    border-radius: 4px;
+    color: #fff;
+
+    cursor: pointer;
+
+    background-color: #aaa;
+
+    &:hover {
+        background-color: #888;
+    }
+
+    &:active {
+        background-color: #666;
+    }
+
+    @include vert-center;
+
+    right: 4px;
+}
+
 
 .ui-timepicker-wrapper {
     width: 80px;
