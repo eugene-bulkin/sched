@@ -311,6 +311,24 @@ div.timeFormContainer {
     border-top: 1px solid #444;
 }
 
+.add-time {
+    display: block;
+    width: 15%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.5em;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    background-color: #aaa;
+}
+.add-time:hover {
+    background-color: #888;
+}
+.add-time:active {
+    background-color: #666;
+}
+
 div.timeForm {
     margin: 2px;
     padding: 4px;
