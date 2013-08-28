@@ -137,57 +137,7 @@ function SchedController($scope) {
     };
 
 
-    $scope.classes = [
-        {
-            name: "CS 116",
-            section: 1,
-            times: [
-                {days: {1: false, 2: true, 3: false, 4: true, 5: false}, start: "13:00", end: "14:25", location: "243 ANB", instructor: "Joshi"}
-            ],
-            color: "#40A6D9"
-        },
-        {
-            name: "CS 156a",
-            section: 1,
-            times: [
-                {days: {1: true, 2: false, 3: false, 4: false, 5: false}, start: "17:00", end: "17:55", location: "070 MRE", instructor: "Abu-Mostafa"}
-            ],
-            color: "#40A6D9"
-        },
-        {
-            name: "Ph 2a",
-            section: 6,
-            times: [
-                {days: {1: false, 2: true, 3: false, 4: true, 5: false}, start: "11:00", end: "11:55", location: "201 BRG", instructor: "Martin / Hsieh"},
-                {days: {1: false, 2: false, 3: true, 4: false, 5: true}, start: "15:00", end: "15:55", location: "11 DWN", instructor: ""}
-            ],
-            color: "#D94040"
-        },
-        {
-            name: "Ma 108a",
-            section: 1,
-            times: [
-                {days: {1: true, 2: false, 3: true, 4: false, 5: true}, start: "11:00", end: "11:55", location: "151 SLN", instructor: "Frank"}
-            ],
-            color: "#52CC52"
-        },
-        {
-            name: "Ma/CS 6a",
-            section: 1,
-            times: [
-                {days: {1: true, 2: false, 3: true, 4: false, 5: true}, start: "13:00", end: "13:55", location: "151 SLN", instructor: "Wilson"}
-            ],
-            color: "#52CC52"
-        },
-        {
-            name: "Ma 5a",
-            section: 1,
-            times: [
-                {days: {1: true, 2: false, 3: true, 4: false, 5: true}, start: "9:00", end: "9:55", location: "151 SLN", instructor: "Flach"}
-            ],
-            color: "#52CC52"
-        }
-    ];
+    $scope.classes = [];
 
     $scope.getDay = function (d) {
         var days = {
