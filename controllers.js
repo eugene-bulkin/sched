@@ -110,6 +110,10 @@ function SchedController($scope) {
         $scope.grid_height = newValue;
     });
 
+    window.onload = function () {
+        $scope.$apply();
+    };
+
     window.onresize = function () {
         $scope.$apply();
     };
