@@ -411,7 +411,22 @@ div.timeForm {
         }
     }
 
-    // TODO: style checkbox area
+    .dayButtons {
+        text-align: center;
+
+        button {
+            font: {
+                size: 14px;
+                weight: bold;
+            }
+
+            padding: 4px 8px;
+            border: none;
+            border-radius: 4px;
+
+            cursor: pointer;
+        }
+    }
 
     input.timeInput {
         @include timeFormFont;

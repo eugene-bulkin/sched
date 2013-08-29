@@ -8,6 +8,16 @@ function getBright(hex) {
     return Math.sqrt(0.299 * r * r + 0.587 * g * g + 0.114 * b * b);
 }
 
+function hex2rgba(hex, opacity) {
+    "use strict";
+    opacity = opacity || 1;
+    hex = hex.replace(/[^a-fA-F0-9]/g, '');
+    var r = parseInt(hex.substr(0, 2), 16),
+        g = parseInt(hex.substr(2, 2), 16),
+        b = parseInt(hex.substr(4, 2), 16);
+    return "rgba(" + r + ", " + g + ", " + b + ", " + opacity + ")";
+}
+
 function getMins(time) {
     "use strict";
     var ts = time.split(":");
@@ -250,6 +260,21 @@ function ClassFormController($scope) {
 
         return result;
     };
+
+    $scope.dayButton = function (color, ci, ti, di) {
+        var bright = getBright(color),
+            result = {
+                color: (bright > 165) ? '#000000' : '#ffffff'
+            };
+
+        if($scope.$parent.classes[ci].times[ti].days[di]) {
+            result.backgroundColor = color;
+        } else {
+            result.backgroundColor = hex2rgba(color, 0.5);
+        }
+
+        return result;
+    }
 
     $scope.$on('classClick', function (event, args) {
         $scope.selectClass(args);

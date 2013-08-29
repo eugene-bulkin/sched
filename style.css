@@ -295,6 +295,15 @@ div.timeForm {
         div.timeForm input:focus {
             border-color: #aaa;
             outline: none; }
+    div.timeForm .dayButtons {
+        text-align: center; }
+        div.timeForm .dayButtons button {
+            font-size: 14px;
+            font-weight: bold;
+            padding: 4px 8px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer; }
     div.timeForm input.timeInput {
         font-size: 14px;
         line-height: 16px;
