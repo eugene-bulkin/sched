@@ -1,4 +1,5 @@
 function getBright(hex) {
+    "use strict";
     hex = hex.replace(/[^a-fA-F0-9]/g, '');
     var r = parseInt(hex.substr(0, 2), 16),
         g = parseInt(hex.substr(2, 2), 16),
@@ -8,12 +9,14 @@ function getBright(hex) {
 }
 
 function getMins(time) {
+    "use strict";
     var ts = time.split(":");
     return 60 * (parseInt(ts[0], 10) || 0) + (parseInt(ts[1], 10) || 0);
 }
 
 function toMins(time) {
-    return (~~(time / 60)).pad(2) + ":" + (time % 60).pad(2);
+    "use strict";
+    return (Math.floor(time / 60)).pad(2) + ":" + (time % 60).pad(2);
 }
 
 var schedModule = angular.module('sched', []);
@@ -23,17 +26,20 @@ var paletteColors = ["D94040", "FFA64D", "F2F249", "52CC52", "40A6D9", "4D4DBF",
 
 // return random item from array
 Array.prototype.choice = function () {
+    "use strict";
     return this[Math.floor(Math.random() * this.length)];
 };
 
 // string padding for a Number
 Number.prototype.pad = function (width, z) {
+    "use strict";
     z = z || '0';
     var n = this + '';
     return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
 };
 
 schedModule.directive('colorPicker', function () {
+    "use strict";
     return {
         require: 'ngModel',
         link: function (scope, element, attrs, ngModel) {
@@ -53,10 +59,11 @@ schedModule.directive('colorPicker', function () {
                 $(element).change();
             };
         }
-    }
+    };
 });
 
 schedModule.directive('timePicker', function () {
+    "use strict";
     return {
         require: 'ngModel',
         link: function (scope, element, attrs, ngModel) {
@@ -67,23 +74,25 @@ schedModule.directive('timePicker', function () {
                 minTime: scope.window.start,
                 maxTime: scope.window.end
             }).on('changeTime', function () {
-                    var newValue = $(this).val();
-                    if (!scope.$$phase) {
-                        scope.$apply(function () {
-                            ngModel.$setViewValue(newValue);
-                        });
-                    }
-                });
+                var newValue = $(this).val();
+                if (!scope.$$phase) {
+                    scope.$apply(function () {
+                        ngModel.$setViewValue(newValue);
+                    });
+                }
+            });
 
             ngModel.$render = function () {
                 $(element).val(ngModel.$viewValue);
                 $(element).change();
             };
         }
-    }
+    };
 });
 
 function SchedController($scope) {
+    "use strict";
+
     $scope.days = [1, 2, 3, 4, 5];
     $scope.window = {start: "08:00", end: "23:00"};
 
@@ -121,7 +130,7 @@ function SchedController($scope) {
     $scope.timeAlign = function (t) {
         var start = getMins($scope.window.start),
             end = getMins($scope.window.end),
-            numTicks = ~~((end - start) / 30),
+            numTicks = Math.floor((end - start) / 30),
             tickSpacing = $scope.grid_height / numTicks;
         return {
             top: ((getMins(t) - start) / 30 * tickSpacing - 4) + 'px'
@@ -153,25 +162,26 @@ function SchedController($scope) {
 
     $scope.selectClass = function (i) {
         $scope.$broadcast('classClick', i);
-    }
+    };
 }
 
 function ClassController($scope) {
+    "use strict";
 
     $scope.get_height = function (i) {
-        var c = $scope.class;
-        var start = c.times[i].start;
-        var end = c.times[i].end;
-        var mins = getMins(end) - getMins(start);
-        var totalMins = getMins($scope.window.end) - getMins($scope.window.start);
+        var c = $scope.class,
+            start = c.times[i].start,
+            end = c.times[i].end,
+            mins = getMins(end) - getMins(start),
+            totalMins = getMins($scope.window.end) - getMins($scope.window.start);
 
         return $("#scheduleContainer").height() * mins / totalMins;
     };
 
     $scope.classStyle = function (ti, day, start) {
-        var startMins = getMins(start) - getMins($scope.window.start);
-        var totalMins = getMins($scope.window.end) - getMins($scope.window.start);
-        var bright = getBright($scope.class.color);
+        var startMins = getMins(start) - getMins($scope.window.start),
+            totalMins = getMins($scope.window.end) - getMins($scope.window.start),
+            bright = getBright($scope.class.color);
         return {
             position: 'absolute',
             top: (startMins / totalMins * $("#scheduleContainer").height()) + 'px',
@@ -182,10 +192,12 @@ function ClassController($scope) {
             color: (bright > 165) ? '#000000' : '#ffffff',
             fontSize: ($scope.get_height(ti) / 3) + 'px'
         };
-    }
+    };
 }
 
 function ClassFormController($scope) {
+    "use strict";
+
     $scope.selectedClass = -1;
 
     $scope.selectClass = function (i) {
@@ -211,7 +223,13 @@ function ClassFormController($scope) {
     };
 
     $scope.addTime = function (i) {
-        $scope.$parent.classes[i].times.push({days: {1: false, 2: false, 3: false, 4: false, 5: false}, start: "", end: "", location: "", instructor: ""})
+        $scope.$parent.classes[i].times.push({
+            days: {1: false, 2: false, 3: false, 4: false, 5: false},
+            start: "",
+            end: "",
+            location: "",
+            instructor: ""
+        });
     };
 
     $scope.removeTime = function (ci, i) {
@@ -223,10 +241,10 @@ function ClassFormController($scope) {
             result = {
                 color: (bright > 165) ? '#000000' : '#ffffff'
             };
-        if(addBG === undefined) {
+        if (addBG === undefined) {
             addBG = true;
         }
-        if(addBG) {
+        if (addBG) {
             result.backgroundColor = color;
         }
 
