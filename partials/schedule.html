@@ -1,0 +1,86 @@
+<div id="appContainer">
+    <div id="scheduleContainer">
+        <div id="grid">
+            <span ng-repeat="t in timeTicks()" class="tick time" ng-style="timeAlign(t)">{{ t }}</span>
+            <span ng-repeat="t in timeTicks()" class="tick line" ng-style="timeAlign(t)"></span>
+
+            <div ng-repeat="day in days" class="day" ng-style="{ width: class_width + 'px' }">
+                <div class="header">{{ getDay(day) }}</div>
+            </div>
+        </div>
+        <div id="classes">
+            <div ng-repeat="class in schedule.classes">
+                <div ng-repeat="time in class.times">
+                    <div ng-repeat="(day, selected) in time.days"
+                         ng-show="selected"
+                         ng-style="classBox(class, time, day)"
+                         ng-click="selectClass($parent.$parent.$index)"
+                         class="class">
+                        <span>
+                        {{ class.name }}<br/>{{ time.location }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="classesForm">
+        <div class="class" ng-repeat="class in schedule.classes">
+            <div ng-hide="selectedClass == $index" class="name"
+                 ng-click="selectClass($index);"
+                 ng-style="nameStyle(class.color)">
+                <div>
+                    <span>{{ class.name }}</span>
+                    <button ng-click="removeClass($index)">x</button>
+                </div>
+            </div>
+            <div ng-show="selectedClass == $index">
+                <div class="name selected" ng-click="closeClass();"
+                     ng-style="nameStyle(class.color)">
+                    <div>
+                        <input ng-model="class.name" ng-required ng-click="$event.stopPropagation()"
+                               ng-style="nameStyle(class.color, false)"/>
+                        <input ng-model="class.color" data-color-picker/>
+                    </div>
+                </div>
+                <div class="classDataFormContainer">
+                    <label>Section <input name="section" ng-model="class.section" size="2"/></label>
+                </div>
+                <div class="timeFormContainer">
+                    <div ng-repeat="time in class.times" class="timeForm">
+                                <span>From <input ng-model="time.start" data-time-picker class="timeInput"/> to
+                                <input ng-model="time.end" data-time-picker class="timeInput"
+                                       ng-blur="update()"/></span>
+                                    <span>taught by <input ng-model="time.instructor"/> in <input
+                                            ng-model="time.location"/></span>
+
+                        <div class="dayButtons">
+                            <button ng-click="time.days[1] = !time.days[1]"
+                                    ng-style="dayButton(class, time, 1)">M
+                            </button>
+                            <button ng-click="time.days[2] = !time.days[2]"
+                                    ng-style="dayButton(class, time, 2)">T
+                            </button>
+                            <button ng-click="time.days[3] = !time.days[3]"
+                                    ng-style="dayButton(class, time, 3)">W
+                            </button>
+                            <button ng-click="time.days[4] = !time.days[4]"
+                                    ng-style="dayButton(class, time, 4)">R
+                            </button>
+                            <button ng-click="time.days[5] = !time.days[5]"
+                                    ng-style="dayButton(class, time, 5)">F
+                            </button>
+                        </div>
+                        <span class="rem-time" ng-click="removeTime($parent.$index, $index)">X</span>
+                    </div>
+                    <span class="add-time" ng-click="addTime($index)">+</span>
+                </div>
+            </div>
+        </div>
+        <div class="class">
+            <div class="name" ng-style="{backgroundColor: '#aaaaaa'}" ng-click="addClass()">
+                <div>Add</div>
+            </div>
+        </div>
+    </div>
+</div>
