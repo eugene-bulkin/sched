@@ -1,0 +1,278 @@
+$menu-bg: #0066ff;
+$menu-width: 25%;
+$menu-t-time: 0.3s;
+$menu-t-type: ease-in-out;
+
+#menuicon {
+  @include trans($menu-t-time $menu-t-type);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  cursor: pointer;
+  z-index: 100;
+  width: 7em;
+  height: 10em;
+  padding-left: 0.5em;
+  @include missing-corners(1.5em, top-right, bottom-right);
+  &:hover {
+    background: $menu-bg;
+    svg rect {
+      stroke: #fff;
+    }
+  }
+  &.open {
+    right: $menu-width;
+    background: $menu-bg;
+    svg rect {
+      stroke: #fff;
+    }
+  }
+  svg {
+    width: 100%;
+    height: 100%;
+    rect {
+      stroke: $menu-bg;
+      @include trans($menu-t-time $menu-t-type);
+    }
+  }
+}
+
+.menu-screen {
+  @include trans($menu-t-time $menu-t-type);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -1 * $menu-width;
+  margin: auto;
+  height: 80%;
+  width: $menu-width;
+  z-index: 100;
+  @include missing-corners(4.5em, top-right, bottom-right);
+  overflow: hidden;
+  padding: 2.5% 0px 5% 2.5%;
+  &.open {
+    right: 0;
+  }
+}
+
+#menu {
+  background: $menu-bg;
+  span.title {
+    padding-right: 0.5em;
+    text-align: right;
+    color: #eee;
+    width: 100%;
+    display: block;
+    font-weight: bold;
+    font-size: 1.75em;
+  }
+  ul {
+    list-style-type: none;
+    overflow: hidden;
+    height: 100%;
+    li {
+      background: #fff;
+      font-size: 1.25em;
+      padding: 0.75em;
+      border-radius: 1.5em;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      margin: 0.5em 0;
+      @include trans($menu-t-time / 3 $menu-t-type);
+      position: relative;
+      &:hover {
+        cursor: pointer;
+        background: hsla(0, 0, 100, 0.7);
+      }
+      span.name {
+        padding-right: 2em;
+        width: 100%;
+      }
+      span.color {
+        position: absolute;
+        width: 1.5em;
+        height: 1.5em;
+        right: 0.5em;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        border-radius: 50%;
+        border: 0.2em solid #000;
+      }
+    }
+  }
+}
+
+.cls-form {
+  width: $menu-width - 2.5%;
+  height: 75%;
+  background: #f8f8f8;
+  border-radius: 30px;
+  padding-left: 1em;
+  padding-right: 0.5em;
+  overflow: visible;
+  .generalInfo {
+    overflow: hidden;
+  }
+  .times-nav {
+    text-align: center;
+    overflow: hidden;
+    margin: 1% 0;
+    table {
+      width: 100%;
+      td {
+        vertical-align: middle;
+        padding: 1px;
+      }
+    }
+    button {
+      height: 2.5em;
+      width: 2.5em;
+      font-weight: bold;
+      background: hsla(0, 0, 0, 0.2);
+      border: 1px solid #000;
+      border-radius: 40%;
+      outline: none;
+      cursor: pointer;
+    }
+    svg {
+      width: 2.5em;
+      height: 2.5em;
+      path {
+        fill: hsla(0, 0, 0, 0.2);
+        stroke: hsla(0, 0, 0, 0.8);
+      }
+      &.active {
+        cursor: pointer;
+        @include svg-button($menu-bg);
+      }
+    }
+  }
+  button.close {
+    width: 2em;
+    height: 2em;
+    position: absolute;
+    left: -1em;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 5em;
+    background: #f8f8f8;
+    border: none;
+    @include missing-corners(8px, top-right, bottom-right);
+    svg {
+      height: 100%;
+      path {
+        fill: #888;
+      }
+    }
+    &:hover {
+      cursor: pointer;
+      svg path {
+        fill: #000;
+      }
+    }
+    &:active, &:focus {
+      -webkit-user-select: none;
+      outline: none;
+    }
+  }
+  form {
+    input {
+      font-size: 1em;
+      padding: 4px 6px;
+      border: 1px solid #888;
+      border-radius: 8px;
+      background: hsla(0, 0, 100, 0.7);
+      &[name="clsName"] {
+        width: 100%;
+      }
+      &[name="clsSect"] {
+        width: 70%;
+        float: right;
+      }
+    }
+    button[name="clsColor"] {
+      width: 26%;
+      margin-right: 2%;
+      margin-left: 2%;
+      font-size: 1em;
+      border-radius: 8px;
+      color: transparent;
+      border: 1px solid #000;
+      padding: 5px 6px;
+      float: left;
+      outline: none;
+      cursor: pointer;
+      &:hover {
+        cursor: pointer;
+        opacity: 0.9;
+      }
+    }
+    div.cls-time {
+      width: 100%;
+      text-align: center;
+      overflow: hidden;
+      input {
+        width: 46%;
+        &.timeInput {
+          width: 30%;
+        }
+      }
+      div.dayButtons {
+        margin-top: 1%;
+        overflow: hidden;
+        padding: 0.2em;
+        button {
+          border: 1px solid #000;
+          border-radius: 40%;
+          width: 2em;
+          height: 2em;
+          font-weight: bold;
+          background: hsla(0, 0, 0, 0.2);
+          outline: none;
+          cursor: pointer;
+          &.selected {
+            background: change_color($menu-bg, $alpha: 0.2);
+            border-color: $menu-bg;
+          }
+        }
+      }
+    }
+  }
+}
+
+#colors {
+  position: absolute;
+  background: #fff;
+  display: table;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+  box-shadow: 0 0 6px 2px #444;
+  &.open {
+    z-index: 1000;
+    height: 120px;
+    width: 120px;
+    visibility: visible;
+  }
+  .row {
+    display: table-row;
+    vertical-align: top;
+  }
+  button {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #fff;
+    display: table-cell;
+    vertical-align: top;
+    outline: none;
+    border-radius: 6px;
+    &:hover {
+      opacity: 0.9;
+      cursor: pointer;
+    }
+  }
+}

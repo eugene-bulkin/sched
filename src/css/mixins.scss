@@ -1,0 +1,30 @@
+@mixin svg-button($color) {
+  &:hover {
+    path {
+      fill: change_color($color, $alpha: 0.4);
+      stroke: change_color($color, $alpha: 1);
+    }
+  }
+  &:active {
+    path {
+      fill: change_color($color, $alpha: 0.3);
+      stroke: change_color($color, $alpha: 0.9);
+    }
+  }
+  path {
+    fill: change_color($color, $alpha: 0.2);
+    stroke: change_color($color, $alpha: 0.8);
+  }
+}
+
+@mixin trans($rules) {
+  -webkit-transition: $rules;
+  transition: $rules;
+}
+
+@mixin missing-corners($radius, $corners...) {
+  border-radius: $radius;
+  @each $corner in $corners {
+    border-#{$corner}-radius: 0 !important;
+  }
+}

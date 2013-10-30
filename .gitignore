@@ -1,6 +1,12 @@
 # WebStorm
 .idea
 
+# Build files
+.sass-cache
+node_modules
+
+*.sublime-*
+
 # Photoshop Files
 *.psd
 

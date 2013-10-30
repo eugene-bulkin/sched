@@ -1,0 +1,66 @@
+<div class="menu-screen cls-form">
+  <button class="close" ng-click="closeForm()">
+    <svg viewBox="0 0 15 20">
+      <path d="M 0 0 L 15 10 L 0 20 L 0 17 L 10 10 L 0 3 Z" />
+    </svg>
+  </button>
+  <form>
+    <div class="generalInfo">
+      <input type="text" name="clsName" ng-model="class.name" placeholder="Class name" />
+      <br/>
+      <color-picker-button ng-model="class.color"></color-picker-button>
+      <input type="text" name="clsSect" ng-model="class.section" placeholder="Section" />
+    </div>
+    <div class="times-nav">
+      <table>
+        <tr>
+          <td>
+            <svg viewBox="0 0 20 20">
+              <path d="M 20 0 L 5 10 L 20 20 L 15 10 Z" />
+            </svg>
+          </td>
+          <td>
+            <button class="timeDelete">
+              X
+            </button>
+          </td>
+          <td>
+            <button class="timeAdd">
+              +
+            </button>
+          </td>
+          <td>
+            <svg viewBox="0 0 20 20">
+              <path d="M 0 0 L 15 10 L 0 20 L 5 10 Z" />
+            </svg>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="cls-time">
+      <input type="time" name="clsTimeFrom" class="timeInput" />
+      to
+      <input type="time" name="clsTimeTo" class="timeInput" />
+      <br/>
+      <input type="text" name="clsInstructor" placeholder="Instructor" />
+      <input type="text" name="clsLocation" placeholder="Location" />
+      <div class="dayButtons">
+        <button class="selected">
+          M
+        </button>
+        <button>
+          T
+        </button>
+        <button class="selected">
+          W
+        </button>
+        <button>
+          R
+        </button>
+        <button class="selected">
+          F
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
