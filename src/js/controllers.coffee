@@ -70,7 +70,11 @@ angular.module('sched.controllers', [])
   , ['$scope'])
   .controller('SchedClassCtrl', ($scope) ->
     $scope.clickClass = (cls) ->
-      console.log(cls, $('#menu').hasClass('open'))
+      if !$('#menu').hasClass('open')
+        $('#menu').addClass('open')
+        $('#menuicon').addClass('open')
+      $('.cls-form').removeClass('open selected')
+      $('#cls-frm-' + cls.id).addClass('open selected')
 
     $scope.getStyle = (cls) ->
       hours = $scope.totalTime
