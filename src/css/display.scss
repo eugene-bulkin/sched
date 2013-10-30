@@ -93,7 +93,20 @@ $time-height: 25px;
       border: 1px solid #000;
       border-radius: 4px;
       background: transparent;
-      cursor: pointer
+      cursor: pointer;
+      span {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        height: 3.75em;
+        margin: auto;
+        display: block;
+        text-align: center;
+        font-size: 1.25em;
+        line-height: 1.25em;
+      }
     }
   }
 }

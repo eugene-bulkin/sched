@@ -20,9 +20,11 @@
     </div>
     <div id="classes" class="display-view">
       <div class="clsBox" ng-repeat="cls in classList" ng-style="getStyle(cls)" ng-click="clickClass(cls)" ng-controller="SchedClassCtrl">
-        {{cls.name}}<br />
-        {{cls.location || TBD}}<br />
-        {{cls.instructor || TBD}}
+        <span>
+          <b>{{cls.name}}</b><br />
+          {{cls.location || 'TBD'}}<br />
+          {{cls.instructor || 'TBD'}}
+        </span>
       </div>
     </div>
   </div>
