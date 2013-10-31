@@ -65,7 +65,14 @@ angular.module('sched.controllers', [])
   , ['$scope', '$route', '$routeParams', '$http'])
   .controller('SchedMenuCtrl', ($scope) ->
     $scope.addClass = () ->
-      console.log($scope.classes)
+      obj = {
+         name: "",
+         section: null,
+         color: "#888",
+         times: []
+      }
+      $scope.classes.push(obj)
+      return
     return
   , ['$scope'])
   .controller('SchedClassCtrl', ($scope) ->
