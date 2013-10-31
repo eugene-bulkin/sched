@@ -234,6 +234,7 @@ $menu-t-type: ease-in-out;
           background: hsla(0, 0, 0, 0.2);
           outline: none;
           cursor: pointer;
+          margin: 0 2px;
           &.selected {
             background: change_color($menu-bg, $alpha: 0.2);
             border-color: $menu-bg;

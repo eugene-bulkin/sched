@@ -64,6 +64,8 @@ angular.module('sched.controllers', [])
     return
   , ['$scope', '$route', '$routeParams', '$http'])
   .controller('SchedMenuCtrl', ($scope) ->
+    $scope.days = ' MTWRF'.split('')
+
     $scope.addClass = () ->
       obj = {
          name: "",

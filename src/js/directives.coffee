@@ -44,6 +44,14 @@ schedHeader = () ->
     link: (scope, element, attrs) ->
   }
 
+schedMenuTimeForm = () ->
+  {
+    restrict: 'EA',
+    replace: true,
+    templateUrl: 'partials/menuTimeForm.html',
+    link: (scope, element, attrs) ->
+  }
+
 schedMenuForm = () ->
   {
     restrict: 'E',
@@ -100,6 +108,7 @@ angular.module('sched.directives', [])
   .directive('colorPickerButton', colorPickerButton)
   .directive('colorPicker', colorPicker)
   .directive('schedHeader', schedHeader)
+  .directive('schedMenuTimeForm', schedMenuTimeForm)
   .directive('schedMenuForm', schedMenuForm)
   .directive('schedMenuLink', schedMenuLink)
   .directive('schedMenu', schedMenu)

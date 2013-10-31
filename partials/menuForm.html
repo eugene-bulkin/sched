@@ -38,28 +38,7 @@
       </table>
     </div>
     <div class="cls-time">
-      <input type="time" name="clsTimeFrom" class="timeInput" />
-      to
-      <input type="time" name="clsTimeTo" class="timeInput" />
-      <br/>
-      <input type="text" name="clsInstructor" placeholder="Instructor" />
-      <input type="text" name="clsLocation" placeholder="Location" />
-      <div class="dayButtons">
-        <button class="selected">
-          M
-        </button>
-        <button>
-          T
-        </button>
-        <button class="selected">
-          W
-        </button>
-        <button>
-          R
-        </button>
-        <button class="selected">
-          F
-        </button>
+      <div ng-repeat="time in class.times" sched-menu-time-form>
       </div>
     </div>
   </form>
