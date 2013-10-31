@@ -218,7 +218,7 @@ $menu-t-type: ease-in-out;
       input {
         width: 46%;
         &.timeInput {
-          width: 30%;
+          width: 6.5em;
         }
       }
       div.dayButtons {
@@ -276,4 +276,8 @@ $menu-t-type: ease-in-out;
       cursor: pointer;
     }
   }
+}
+
+.ui-time-picker li {
+  padding: 4px 6px;
 }

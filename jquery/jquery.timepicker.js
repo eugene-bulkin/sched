@@ -119,9 +119,10 @@
 
             var leftOffset = self.offset().left + parseInt(list.css('marginLeft').replace('px', ''), 10);
             // take care of bug in chrome/ie where dropdown would not be in the right spot on first click
-            if (($.browser.webkit || $.browser.msie) && Math.abs(self.offset().left - list.offset().left) > 1) {
+
+            /*if (($.browser.webkit || $.browser.msie) && Math.abs(self.offset().left - list.offset().left) > 1) {
                 leftOffset -= list.offset().left;
-            }
+            }*/
 
             if ((self.offset().top + self.outerHeight(true) + list.outerHeight()) > $(window).height() + $(window).scrollTop()) {
                 // position the dropdown on top

@@ -103,8 +103,32 @@ schedDisplay = () ->
     link: (scope, element, attrs) ->
   }
 
+timePicker = () ->
+  {
+    restrict: 'A',
+    require: 'ngModel',
+    link: (scope, element, attrs, ngModel) ->
+      $(element).timepicker({
+        timeFormat: 'H:i',
+        step: 5,
+        forceRoundTime: true,
+        minTime: scope.$parent.$parent.timeOrigin,
+        maxTime: scope.$parent.$parent.timeEnd
+      }).on('changeTime', () ->
+        newValue = $(this).val()
+        if (!scope.$$phase)
+          scope.$apply(() -> ngModel.$setViewValue(newValue))
+        return
+      )
+
+      ngModel.$render = () ->
+        $(element).val(ngModel.$viewValue)
+        $(element).change()
+  }
+
 angular.module('sched.directives', [])
   .directive('repeated', repeated)
+  .directive('timePicker', timePicker)
   .directive('colorPickerButton', colorPickerButton)
   .directive('colorPicker', colorPicker)
   .directive('schedHeader', schedHeader)
