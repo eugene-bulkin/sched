@@ -75,6 +75,7 @@ angular.module('sched.controllers', [])
         $('#menuicon').addClass('open')
       $('.cls-form').removeClass('open selected')
       $('#cls-frm-' + cls.id).addClass('open selected')
+      return
 
     $scope.getStyle = (cls) ->
       hours = $scope.totalTime
