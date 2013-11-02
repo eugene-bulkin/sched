@@ -2,7 +2,7 @@
 <html>
   <head>
   <meta charset='UTF-8'>
-  <title>CoffeeScript API Documentation</title>
+  <title>sched documentation</title>
   <link rel='stylesheet' href='../../../assets/codo.css' type='text/css'>
   <script src='../../../assets/codo.js'></script>
   <script src='../../../assets/search_data.js'></script>
@@ -122,11 +122,51 @@
   <li>
     <span class='signature'>
       <a href='#chunk-file'>
-        ? (void) <strong>chunk</strong>(arr, chunkSize)
+        ? (Array) <strong>chunk</strong>(arr, chunkSize)
       </a>
     </span>
     <span class='desc'>
-      
+      Auxiliary function to chunk an array into certain-sized pieces.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#SchedCtrl-file'>
+        ? (void) <strong>SchedCtrl</strong>($scope, $route, $routeParams, $http)
+      </a>
+    </span>
+    <span class='desc'>
+      The schedule app controller.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#SchedMenuCtrl-file'>
+        ? (void) <strong>SchedMenuCtrl</strong>($scope)
+      </a>
+    </span>
+    <span class='desc'>
+      The schedule menu controller.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#SchedClassCtrl-file'>
+        ? (void) <strong>SchedClassCtrl</strong>($scope)
+      </a>
+    </span>
+    <span class='desc'>
+      The schedule class controller.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#SchedDisplayCtrl-file'>
+        ? (void) <strong>SchedDisplayCtrl</strong>($scope)
+      </a>
+    </span>
+    <span class='desc'>
+      The schedule display controller.
     </span>
   </li>
 </ul>
@@ -134,16 +174,143 @@
       <div class='methods'>
   <div class='method_details'>
     <p class='signature' id='chunk-file'>
-      ? (void) <strong>chunk</strong>(arr, chunkSize)
+      ? (Array) <strong>chunk</strong>(arr, chunkSize)
     </p>
-    <div class='tags'>
+    <div class='docstring'>
+  <p>Auxiliary function to chunk an array into certain-sized pieces. This is used for
+the color selector palette.</p>
+  <div class='examples'>
+    <h3>Examples:</h3>
+    <h4>
+      
+    </h4>
+    <pre><code class='coffee'>chunk([1,2,3,4,5,6,7], 2) = [[1,2],[3,4],[5,6],[7]]</code></pre>
+  </div>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>arr</span>
+      <span class='type'>
+        (<tt>Array</tt>)
+      </span>
+    </li>
+    <li>
+      <span class='name'>chunkSize</span>
+      <span class='type'>
+        (<tt>Integer</tt>)
+      </span>
+      &mdash;
+      <span class='desc'>how large each chunk is</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span><tt>Array</tt></li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='SchedCtrl-file'>
+      ? (void) <strong>SchedCtrl</strong>($scope, $route, $routeParams, $http)
+    </p>
+    <div class='docstring'>
+  <p>The schedule app controller. Keeps track of classes.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>$scope</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+    </li>
+    <li>
+      <span class='name'>$route</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+    </li>
+    <li>
+      <span class='name'>$routeParams</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+    </li>
+    <li>
+      <span class='name'>$http</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='SchedMenuCtrl-file'>
+      ? (void) <strong>SchedMenuCtrl</strong>($scope)
+    </p>
+    <div class='docstring'>
+  <p>The schedule menu controller.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>$scope</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='SchedClassCtrl-file'>
+      ? (void) <strong>SchedClassCtrl</strong>($scope)
+    </p>
+    <div class='docstring'>
+  <p>The schedule class controller.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>$scope</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='SchedDisplayCtrl-file'>
+      ? (void) <strong>SchedDisplayCtrl</strong>($scope)
+    </p>
+    <div class='docstring'>
+  <p>The schedule display controller.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>$scope</span>
+      <span class='type'>
+        (<tt>Object</tt>)
+      </span>
+    </li>
+  </ul>
 </div>
   </div>
 </div>
     </div>
     <div id='footer'>
   Generated on
-  Sat Nov 02 2013 12:56:13 GMT-0500 (Central Daylight Time)
+  Sat Nov 02 2013 13:18:28 GMT-0500 (Central Daylight Time)
   by
   <a href='https://github.com/netzpirat/codo' title='CoffeeScript API documentation generator'>Codo</a>
   v1.9.0

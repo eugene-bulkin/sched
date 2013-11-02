@@ -38,7 +38,7 @@ module.exports = (grunt) ->
     },
     shell: {
       codo: {
-        command: 'codo -n "sched" --cautious src/js/'
+        command: 'codo -n "sched" --title "sched documentation" --cautious src/js/'
       }
     }
   })
