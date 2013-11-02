@@ -6,11 +6,11 @@ $label-width: 30px;
 $time-height: 25px;
 
 #display {
-  width: 90%;
+  width: calc(100% - 8em);
   position: relative;
   height: $display-height + $time-height;
   #view {
-    width: 100%;
+    width: calc(100% - $label-width);
     height: 100%;
     left: $label-width;
     position: absolute;
