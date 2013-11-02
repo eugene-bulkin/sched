@@ -29,11 +29,16 @@ module.exports = (grunt) ->
     watch: {
       scripts: {
         files: ['src/js/*.coffee'],
-        tasks: ['coffeelint', 'coffee']
+        tasks: ['coffeelint', 'coffee', 'shell:codo']
       },
       styles: {
         files: ['src/css/*.scss'],
         tasks: ['sass']
+      }
+    },
+    shell: {
+      codo: {
+        command: 'codo -n "sched" --cautious src/js/'
       }
     }
   })
@@ -43,6 +48,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks('grunt-contrib-sass')
   grunt.loadNpmTasks('grunt-contrib-watch')
   grunt.loadNpmTasks('grunt-contrib-coffee')
+  grunt.loadNpmTasks('grunt-shell')
 
   # Default task(s).
-  grunt.registerTask('default', ['coffeelint', 'coffee', 'sass', 'watch'])
+  grunt.registerTask('default', ['coffeelint', 'coffee', 'sass', 'watch', 'shell:codo'])
