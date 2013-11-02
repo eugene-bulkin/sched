@@ -7,8 +7,13 @@ $time-height: 25px;
 
 #display {
   width: calc(100% - 8em);
-  position: relative;
+  position: absolute;
   height: $display-height + $time-height;
+  height: 550px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: 0;
   #view {
     width: calc(100% - $label-width);
     height: 100%;
