@@ -88,6 +88,7 @@ angular.module('sched.controllers', [])
   , ['$scope'])
   .controller('SchedClassCtrl', ($scope) ->
     $scope.clickClass = (cls) ->
+      $scope.$emit('class-click', cls.tId)
       if !$('#menu').hasClass('open')
         $('#menu').addClass('open')
         $('#menuicon').addClass('open')
@@ -128,7 +129,7 @@ angular.module('sched.controllers', [])
     getClasses = () ->
       result = []
       for cls, clsId in $scope.classes
-        for time in cls.times
+        for time, timeIndex in cls.times
           for day in [1..5]
             if(!time.days[day]) then continue
             clsInfo = {
@@ -140,7 +141,8 @@ angular.module('sched.controllers', [])
               instructor: time.instructor,
               day: day,
               color: cls.color,
-              id: clsId
+              id: clsId,
+              tId: timeIndex
             }
             result.push(clsInfo)
       result

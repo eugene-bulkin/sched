@@ -62,6 +62,9 @@ schedMenuForm = () ->
         $(this).parent().toggleClass("open selected")
         if $("#colors") then $("#colors").hide()
       )
+      scope.$parent.$on('class-click', (e, args...) ->
+        scope.selectedTime = args[0]
+      )
       scope.selectedTime = if scope.class.times.length > 0 then 0 else -1
       scope.prevActive = () -> scope.selectedTime > 0
       scope.nextActive = () -> scope.selectedTime < scope.class.times.length - 1
