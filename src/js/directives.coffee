@@ -62,6 +62,23 @@ schedMenuForm = () ->
         $(this).parent().toggleClass("open selected")
         if $("#colors") then $("#colors").hide()
       )
+      scope.selectedTime = if scope.class.times.length > 0 then 0 else -1
+      scope.prevActive = () -> scope.selectedTime > 0
+      scope.nextActive = () -> scope.selectedTime < scope.class.times.length - 1
+      scope.delActive = () -> scope.class.times.length > 0
+      scope.delTime = () ->
+        $("#smtf-#{scope.$index}-#{scope.selectedTime}").remove()
+        scope.class.times.splice(scope.selectedTime, 1)
+        if scope.selectedTime > scope.class.times.length - 1 then scope.selectedTime -= 1
+      scope.addTime = () ->
+        scope.class.times.push {
+          days: {1: false, 2: false, 3: false, 4: false, 5: false},
+          start: null,
+          end: null,
+          location: null,
+          instructor: null
+        }
+        scope.selectedTime = scope.class.times.length - 1
   }
 
 schedMenuLink = () ->

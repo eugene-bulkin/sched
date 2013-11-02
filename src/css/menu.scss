@@ -136,6 +136,10 @@ $menu-t-type: ease-in-out;
       border-radius: 40%;
       outline: none;
       cursor: pointer;
+      &.active {
+        cursor: pointer;
+        @include button-colors($menu-bg);
+      }
     }
     svg {
       width: 2.5em;

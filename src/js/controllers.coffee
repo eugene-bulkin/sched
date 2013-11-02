@@ -32,28 +32,37 @@ angular.module('sched.controllers', [])
           }]
       },
       {
-         name: "Ma 6a",
-         section: 1,
-         color: "#4f8",
-         times: [{
-              days: {1: true, 2: false, 3: true, 4: false, 5: true},
-              start: "13:00",
-              end: "13:55",
-              location: "151 SLN",
-              instructor: null
-          }]
+        name: "Ma 6a",
+        section: 1,
+        color: "#4f8",
+        times: [{
+          days: {1: true, 2: false, 3: true, 4: false, 5: true},
+          start: "13:00",
+          end: "13:55",
+          location: "151 SLN",
+          instructor: null
+        }]
       },
       {
-         name: "Ph 2a",
-         section: 1,
-         color: "#4f8",
-         times: [{
-              days: {1: false, 2: true, 3: false, 4: true, 5: false},
-              start: "11:30",
-              end: "12:55",
-              location: "151 SLN",
-              instructor: null
-          }]
+        name: "Ph 2a",
+        section: 1,
+        color: "#4f8",
+        times: [
+          {
+            days: {1: false, 2: true, 3: false, 4: true, 5: false},
+            start: "11:30",
+            end: "12:55",
+            location: "151 SLN",
+            instructor: null
+          },
+          {
+            days: {1: false, 2: false, 3: false, 4: false, 5: true},
+            start: "15:00",
+            end: "15:55",
+            location: "151 SLN",
+            instructor: null
+          }
+        ]
       }
     ]
 

@@ -15,22 +15,22 @@
       <table>
         <tr>
           <td>
-            <svg viewBox="0 0 20 20">
+            <svg viewBox="0 0 20 20" ng-class="(prevActive()) ? 'active' : ''" ng-click="selectedTime = selectedTime - ((prevActive()) ? 1 : 0)">
               <path d="M 20 0 L 5 10 L 20 20 L 15 10 Z" />
             </svg>
           </td>
           <td>
-            <button class="timeDelete">
+            <button class="timeDelete" ng-class="(delActive()) ? 'active' : ''" ng-click="delTime()">
               X
             </button>
           </td>
           <td>
-            <button class="timeAdd">
+            <button class="timeAdd active" ng-click="addTime()">
               +
             </button>
           </td>
           <td>
-            <svg viewBox="0 0 20 20">
+            <svg viewBox="0 0 20 20" ng-class="(nextActive()) ? 'active' : ''" ng-click="selectedTime = selectedTime + ((nextActive()) ? 1 : 0)">
               <path d="M 0 0 L 15 10 L 0 20 L 5 10 Z" />
             </svg>
           </td>
@@ -38,8 +38,7 @@
       </table>
     </div>
     <div class="cls-time">
-      <div ng-repeat="time in class.times" sched-menu-time-form>
-      </div>
+      <sched-menu-time-form ng-repeat="time in class.times" ng-show="$index == selectedTime" id="smtf-{{$parent.$index}}-{{$index}}"></sched-menu-time-form>
     </div>
   </form>
 </div>

@@ -17,6 +17,21 @@
   }
 }
 
+@mixin button-colors($color) {
+  &:hover {
+    background-color: change_color($color, $alpha: 0.4);
+    border-color: change_color($color, $alpha: 1);
+  }
+  &:active {
+    background-color: change_color($color, $alpha: 0.3);
+    border-color: change_color($color, $alpha: 0.9);
+  }
+  & {
+    background-color: change_color($color, $alpha: 0.2);
+    border-color: change_color($color, $alpha: 0.8);
+  }
+}
+
 @mixin trans($rules) {
   -webkit-transition: $rules;
   transition: $rules;
