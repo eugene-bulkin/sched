@@ -1,3 +1,7 @@
+###
+A directive for handling the color palette. Handles issue with ng-repeat and
+scope handling.
+###
 repeated = () ->
   {
     restrict: 'A',
@@ -14,6 +18,9 @@ repeated = () ->
       )
   }
 
+###
+A directive for the button that brings up the color palette from the menu form.
+###
 colorPickerButton = () ->
   {
     restrict: 'E',
@@ -28,6 +35,10 @@ colorPickerButton = () ->
       )
   }
 
+###
+A directive for a color palette. The palette, on click, changes the color of
+the class.
+###
 colorPicker = () ->
   {
     restrict: 'E',
@@ -36,6 +47,9 @@ colorPicker = () ->
     link: (scope, element, attrs) ->
   }
 
+###
+A directive for the header section of the page.
+###
 schedHeader = () ->
   {
     restrict: 'E',
@@ -44,14 +58,9 @@ schedHeader = () ->
     link: (scope, element, attrs) ->
   }
 
-schedMenuTimeForm = () ->
-  {
-    restrict: 'EA',
-    replace: true,
-    templateUrl: 'partials/menuTimeForm.html',
-    link: (scope, element, attrs) ->
-  }
-
+###
+A directive for handling the menu forms
+###
 schedMenuForm = () ->
   {
     restrict: 'E',
@@ -84,6 +93,20 @@ schedMenuForm = () ->
         scope.selectedTime = scope.class.times.length - 1
   }
 
+###
+A directive for the time information area of the class menu form.
+###
+schedMenuTimeForm = () ->
+  {
+    restrict: 'EA',
+    replace: true,
+    templateUrl: 'partials/menuTimeForm.html',
+    link: (scope, element, attrs) ->
+  }
+
+###
+A directive for menu links
+###
 schedMenuLink = () ->
   {
     restrict: 'E',
@@ -102,6 +125,9 @@ schedMenuLink = () ->
       )
   }
 
+###
+A directive for the class menu
+###
 schedMenu = () ->
   {
     restrict: 'E',
@@ -115,6 +141,9 @@ schedMenu = () ->
       )
   }
 
+###
+A directive for the schedule display
+###
 schedDisplay = () ->
   {
     restrict: 'E',
@@ -123,6 +152,11 @@ schedDisplay = () ->
     link: (scope, element, attrs) ->
   }
 
+###
+A directive for a timepicker.
+
+@see http://jonthornton.github.io/jquery-timepicker/
+###
 timePicker = () ->
   {
     restrict: 'A',
