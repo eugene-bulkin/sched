@@ -24,7 +24,7 @@ The schedule app controller. Keeps track of classes.
 @param [Object] $http
 ###
 SchedCtrl = ($scope, $route, $routeParams, $http) ->
-  $scope.classes = [
+  testClasses = [
     {
        name: "Ma 5a",
        section: 1,
@@ -83,6 +83,10 @@ SchedCtrl = ($scope, $route, $routeParams, $http) ->
       ]
     }
   ]
+  if $routeParams.schedId is '1'
+    $scope.classes = testClasses
+  else
+    $scope.classes = []
 
   $scope.colorPalette = chunk([
     "#d44", "#f84", "#fe8",

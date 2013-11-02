@@ -10,7 +10,7 @@
     <link href="jquery/jquery.timepicker.css" rel="stylesheet" type="text/css"/>
     <script src="build/sched.js"></script>
   </head>
-  <body ng-controller="SchedCtrl">
+  <body>
     <color-picker></color-picker>
     <table id="body">
       <tr>
@@ -20,8 +20,7 @@
       </tr>
       <tr>
         <td id="content">
-          <sched-display></sched-display>
-          <sched-menu></sched-menu>
+          <div ng-view></div>
         </td>
       </tr>
     </table>
