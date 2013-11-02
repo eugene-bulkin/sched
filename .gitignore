@@ -4,6 +4,8 @@
 # Build files
 .sass-cache
 node_modules
+src/js/*.js
+Gruntfile.js
 
 *.sublime-*
 
