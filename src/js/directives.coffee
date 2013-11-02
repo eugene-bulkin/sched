@@ -118,10 +118,7 @@ schedMenuLink = () ->
         frm.toggleClass("open selected")
         # on slide end, move the color picker box to the appropriate area
         tre = 'transitionend webkitTransitionEnd oTransitionEnd otransitionend'
-        frm.on(tre, () ->
-          offset = $(".cls-form.open").find("button[name='clsColor']").offset()
-          if $("#colors") and offset then $('#colors').css(offset)
-        )
+        frm.on(tre, colorPickerPlace)
       )
   }
 
