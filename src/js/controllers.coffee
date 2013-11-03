@@ -142,51 +142,60 @@ The schedule display controller.
 @param [Object] $scope
 ###
 SchedDisplayCtrl = ($scope) ->
-    $scope.timeDiff = (start, end) ->
-      toMins = (p, n, i) -> p + Math.pow(60, 1 - i) * n
-      end.split(":").reduce(toMins, 0) - start.split(":").reduce(toMins, 0)
+  $scope.timeDiff = (start, end) ->
+    toMins = (p, n, i) -> p + Math.pow(60, 1 - i) * n
+    end.split(":").reduce(toMins, 0) - start.split(":").reduce(toMins, 0)
 
-    $scope.timeOrigin = "07:30" # time origin is 7:30 AM
-    $scope.timeEnd = "23:30" # time end is 11:30 PM
-    $scope.totalTime = $scope.timeDiff($scope.timeOrigin, $scope.timeEnd) / 60
-    $scope.blockWidth = 60
+  $scope.timeOrigin = "07:30" # time origin is 7:30 AM
+  $scope.timeEnd = "23:30" # time end is 11:30 PM
+  $scope.totalTime = $scope.timeDiff($scope.timeOrigin, $scope.timeEnd) / 60
+  $scope.blockWidth = 60
 
-    $scope.range = (from, to) ->
-      if(!to)
-        to = from
-        from = 1
-      [from..to]
+  $scope.range = (from, to) ->
+    if(!to)
+      to = from
+      from = 1
+    [from..to]
 
-    getClasses = () ->
-      result = []
-      for cls, clsId in $scope.classes
-        for time, timeIndex in cls.times
-          for day in [1..5]
-            if(!time.days[day]) then continue
-            clsInfo = {
-              name: cls.name,
-              section: cls.section,
-              start: time.start,
-              end: time.end,
-              location: time.location,
-              instructor: time.instructor,
-              day: day,
-              color: cls.color,
-              id: clsId,
-              tId: timeIndex
-            }
-            result.push(clsInfo)
-      result
+  getClasses = () ->
+    result = []
+    for cls, clsId in $scope.classes
+      for time, timeIndex in cls.times
+        for day in [1..5]
+          if(!time.days[day]) then continue
+          clsInfo = {
+            name: cls.name,
+            section: cls.section,
+            start: time.start,
+            end: time.end,
+            location: time.location,
+            instructor: time.instructor,
+            day: day,
+            color: cls.color,
+            id: clsId,
+            tId: timeIndex
+          }
+          result.push(clsInfo)
+    result
 
+  $scope.classList = getClasses()
+
+  $scope.$watch('classes', () ->
     $scope.classList = getClasses()
+  , true)
+  return
 
-    $scope.$watch('classes', () ->
-      $scope.classList = getClasses()
-    , true)
-    return
+SchedHeaderCtrl = ($scope) ->
+  $scope.showLogin = false
+  $scope.closeModal = (e) ->
+    if e.keyCode is 27 #close on Esc key
+      $scope.showLogin = false
+      $scope.$apply()
+      $(this).unbind "keyup"
 
 angular.module('sched.controllers', [])
   .controller('SchedCtrl', SchedCtrl, ['$scope'])
   .controller('SchedMenuCtrl', SchedMenuCtrl, ['$scope'])
   .controller('SchedClassCtrl', SchedClassCtrl, ['$scope'])
   .controller('SchedDisplayCtrl', SchedDisplayCtrl, ['$scope'])
+  .controller('SchedHeaderCtrl', SchedHeaderCtrl, ['$scope'])

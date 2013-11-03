@@ -27,58 +27,10 @@ body {
 table#body {
   height: 100%;
   width: 100%;
-  #header {
-    height: 15em;
-    background: url('../images/header.png');
-    background-size: cover;
-    position: relative;
-  }
   #content {
     height: 100%;
     position: relative;
     padding-top: 1em;
-  }
-}
-
-#header {
-  #topbar {
-    height: 4em;
-    background: #fafafa;
-    padding: 1em;
-    position: relative;
-    ul {
-      list-style: none;
-      text-align: right;
-      position: absolute;
-      margin: auto;
-      height: 2em;
-      line-height: 2em;
-      top: 0;
-      bottom: 0;
-      right: 1em;
-      li {
-        text-transform: uppercase;
-        font-size: 1.25em;
-        font-weight: 700;
-        color: #444;
-      }
-    }
-  }
-  #logo {
-    margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 6.5em;
-    padding-top: 1em;
-    width: 16em;
-    text-align: center;
-    background: #fafafa;
-    position: absolute;
-    @include missing-corners(2em, top-left, top-right);
-    img {
-      height: 100%;
-    }
   }
 }
 
@@ -89,3 +41,4 @@ input {
 
 @import 'menu';
 @import 'display';
+@import 'header';

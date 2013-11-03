@@ -54,8 +54,27 @@ schedHeader = () ->
   {
     restrict: 'E',
     replace: false,
+    controller: SchedHeaderCtrl,
     templateUrl: 'partials/header.html',
     link: (scope, element, attrs) ->
+      $("#login").on 'click', () ->
+        $(document).on "keyup", scope.closeModal
+        scope.showLogin = true
+        scope.$apply()
+
+  }
+
+###
+A directive for the login modal
+###
+loginModal = () ->
+  {
+    restrict: 'E',
+    replace: true,
+    controller: SchedHeaderCtrl
+    templateUrl: 'partials/loginModal.html'
+    link: (scope, element, attrs) ->
+
   }
 
 ###
@@ -183,6 +202,7 @@ angular.module('sched.directives', [])
   .directive('colorPickerButton', colorPickerButton)
   .directive('colorPicker', colorPicker)
   .directive('schedHeader', schedHeader)
+  .directive('loginModal', loginModal)
   .directive('schedMenuTimeForm', schedMenuTimeForm)
   .directive('schedMenuForm', schedMenuForm)
   .directive('schedMenuLink', schedMenuLink)
