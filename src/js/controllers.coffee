@@ -19,7 +19,7 @@ chunk = (arr, chunkSize) ->
 The schedule app controller. Keeps track of classes.
 
 @param [Object] $scope
-@param [Object] classes The classes loaded by the Schedule factory
+@param [Array] classes The classes loaded by the Schedule factory
 ###
 SchedCtrl = ($scope, classes) ->
   $scope.classes = classes
