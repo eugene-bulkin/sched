@@ -1,0 +1,15 @@
+.login-screen.ng-enter, .login-screen.ng-leave {
+  @include trans(left ease-in-out 0.35s);
+}
+
+.login-screen.ng-enter {
+  left: 100%;
+}
+.login-screen.ng-leave.ng-leave-active {
+  left: -100%;
+}
+
+.login-screen.ng-enter.ng-enter-active,
+.login-screen.ng-leave {
+  left: 0;
+}

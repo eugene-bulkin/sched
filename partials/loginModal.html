@@ -1,4 +1,10 @@
 <div class="modal" ng-show="showLogin">
   <div class="modal-content">
+    <div ng-if="login" class="login-screen">
+      login
+    </div>
+    <div ng-if="!login" class="login-screen">
+      register
+    </div>
   </div>
 </div>

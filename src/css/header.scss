@@ -59,11 +59,18 @@
     bottom: 0;
     left: 0;
     right: 0;
+    overflow: hidden;
     margin: auto;
-    width: 600px;
+    width: 60%;
     height: 450px;
     background: #fdfdfd;
     z-index: 1001;
     border-radius: 40px;
+    .login-screen {
+      position: absolute;
+      padding: 40px;
+      width: 100%;
+      height: 100%;
+    }
   }
 }

@@ -32,8 +32,10 @@
   }
 }
 
-@mixin trans($rules) {
+@mixin trans($rules...) {
   -webkit-transition: $rules;
+  -moz-transition: $rules;
+  -o-transition: $rules;
   transition: $rules;
 }
 

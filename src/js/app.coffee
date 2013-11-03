@@ -11,7 +11,7 @@ colorPickerPlace = () ->
   })
 
 angular.module('sched',
-  ['ngRoute', 'ngResource', 'sched.directives', 'sched.controllers', 'sched.factories'],
+  ['ngRoute', 'ngResource', 'ngAnimate', 'sched.directives', 'sched.controllers', 'sched.factories'],
   ($routeProvider) ->
     classResolver = {
       classes: (Schedule, $q, $route) ->
