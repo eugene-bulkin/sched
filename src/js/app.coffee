@@ -11,15 +11,29 @@ colorPickerPlace = () ->
   })
 
 angular.module('sched',
-  ['ngRoute', 'sched.directives', 'sched.controllers', 'sched.factories'],
+  ['ngRoute', 'ngResource', 'sched.directives', 'sched.controllers', 'sched.factories'],
   ($routeProvider) ->
+    classResolver = {
+      classes: (Schedule, $q, $route) ->
+        deferred = $q.defer()
+        Schedule.query({ id: $route.current.params.schedId }, (data) ->
+          deferred.resolve(data)
+        , (reason) ->
+          deferred.reject()
+        )
+        deferred.promise
+    }
     $routeProvider.when('/', {
       template: '<sched-display></sched-display><sched-menu></sched-menu><color-picker></color-picker>',
-      controller: SchedCtrl
+      controller: SchedCtrl,
+      resolve: {
+        classes: () -> [] # resolve to empty list if there's no id
+      }
     })
     $routeProvider.when('/view/:schedId', {
       template: '<sched-display></sched-display><sched-menu></sched-menu><color-picker></color-picker>',
-      controller: SchedCtrl
+      controller: SchedCtrl,
+      resolve: classResolver
     })
     $routeProvider.otherwise({
       redirectTo: '/'

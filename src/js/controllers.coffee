@@ -19,11 +19,10 @@ chunk = (arr, chunkSize) ->
 The schedule app controller. Keeps track of classes.
 
 @param [Object] $scope
-@param [Object] $route
-@param [Object] $routeParams
-@param [Object] $http
+@param [Object] classes The classes loaded by the Schedule factory
 ###
-SchedCtrl = ($scope, $route, $routeParams, $http) ->
+SchedCtrl = ($scope, classes) ->
+  $scope.classes = classes
   testClasses = [
     {
        name: "Ma 5a",
@@ -83,17 +82,12 @@ SchedCtrl = ($scope, $route, $routeParams, $http) ->
       ]
     }
   ]
-  if $routeParams.schedId is '1'
-    $scope.classes = testClasses
-  else
-    $scope.classes = []
 
   $scope.colorPalette = chunk([
     "#d44", "#f84", "#fe8",
     "#8d8", "#48d", "#a6f",
     "#642", "#aaa", "#888"], 3)
   return
-
 ###
 The schedule menu controller.
 
@@ -192,7 +186,7 @@ SchedDisplayCtrl = ($scope) ->
     return
 
 angular.module('sched.controllers', [])
-  .controller('SchedCtrl', SchedCtrl, ['$scope', '$route', '$routeParams', '$http'])
+  .controller('SchedCtrl', SchedCtrl, ['$scope'])
   .controller('SchedMenuCtrl', SchedMenuCtrl, ['$scope'])
   .controller('SchedClassCtrl', SchedClassCtrl, ['$scope'])
   .controller('SchedDisplayCtrl', SchedDisplayCtrl, ['$scope'])
