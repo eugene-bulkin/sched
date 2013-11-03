@@ -74,7 +74,8 @@ loginModal = () ->
     controller: SchedHeaderCtrl
     templateUrl: 'partials/loginModal.html'
     link: (scope, element, attrs) ->
-
+      scope.toggleRegister = () ->
+        scope.login = !scope.login
   }
 
 ###

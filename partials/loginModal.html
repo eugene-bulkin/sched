@@ -1,10 +1,18 @@
 <div class="modal" ng-show="showLogin">
   <div class="modal-content">
-    <div ng-if="login" class="login-screen">
-      login
+    <div ng-if="login" class="login-screen" id="login-view">
+      <div class="left">
+      </div>
+      <div class="right">
+        Don't have an account?<br /><br /><button role="button" ng-click="toggleRegister()">Click Here to Register!</button>
+      </div>
     </div>
-    <div ng-if="!login" class="login-screen">
-      register
+    <div ng-if="!login" class="login-screen" id="register-view">
+      <div class="left">
+      </div>
+      <div class="right">
+        Already have an account?<br /><br /><button role="button" ng-click="toggleRegister()">Go Back</button>
+      </div>
     </div>
   </div>
 </div>

@@ -193,9 +193,6 @@ SchedHeaderCtrl = ($scope) ->
       $scope.showLogin = false
       $scope.$apply()
       $(this).unbind "keyup"
-    if e.keyCode is 32
-      $scope.login = !$scope.login
-      $scope.$apply()
 
 angular.module('sched.controllers', [])
   .controller('SchedCtrl', SchedCtrl, ['$scope'])
