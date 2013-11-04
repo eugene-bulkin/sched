@@ -6,6 +6,7 @@
 node_modules
 src/js/*.js
 Gruntfile.js
+index.html
 
 *.sublime-*
 
