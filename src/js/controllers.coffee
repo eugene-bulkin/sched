@@ -185,18 +185,53 @@ SchedDisplayCtrl = ($scope) ->
   , true)
   return
 
-SchedHeaderCtrl = ($scope) ->
+SchedHeaderCtrl = ($scope, User) ->
   $scope.showLogin = false
   $scope.login = true
+  $scope.errorMsg = null
+  $scope.loginForm = null
   $scope.closeModal = (e) ->
     if e.keyCode is 27 #close on Esc key
       $scope.showLogin = false
       $scope.$apply()
       $(this).unbind "keyup"
+  $scope.processLogin = () ->
+    form = @loginForm
+    User.login({
+      username: @username,
+      password: @password
+    }, (response) ->
+      if response.data is "login_success"
+        # if success, close the modal
+        $scope.showLogin = false
+        $(document).unbind "keyup"
+        # TODO: reset form
+        form.$setPristine()
+        # TODO: update header to reflect login
+    , (error) ->
+      $scope.errorMsg = error.data
+    )
+  $scope.processRegister = () ->
+    form = @registerForm
+    User.register({
+      username: @username,
+      password: @password
+    }, (response) ->
+      if response.data is "register_success"
+        # if success, close the modal
+        $scope.showLogin = false
+        $(document).unbind "keyup"
+        # TODO: reset form
+        form.$setPristine()
+        # TODO: update header to reflect login
+    , (error) ->
+      $scope.errorMsg = error.data
+    )
+
 
 angular.module('sched.controllers', [])
   .controller('SchedCtrl', SchedCtrl, ['$scope'])
   .controller('SchedMenuCtrl', SchedMenuCtrl, ['$scope'])
   .controller('SchedClassCtrl', SchedClassCtrl, ['$scope'])
   .controller('SchedDisplayCtrl', SchedDisplayCtrl, ['$scope'])
-  .controller('SchedHeaderCtrl', SchedHeaderCtrl, ['$scope'])
+  .controller('SchedHeaderCtrl', SchedHeaderCtrl, ['$scope', 'User'])

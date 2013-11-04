@@ -78,6 +78,17 @@ loginModal = () ->
         scope.login = !scope.login
   }
 
+userExists = (User) ->
+  {
+    require:'ngModel',
+    restrict: 'A',
+    link: (scope, el, attrs, ctrl) ->
+      ctrl.$parsers.push((username) ->
+        # TODO: Implement user existence validator
+        username
+      )
+  }
+
 ###
 A directive for handling the menu forms
 ###
@@ -204,6 +215,7 @@ angular.module('sched.directives', [])
   .directive('colorPicker', colorPicker)
   .directive('schedHeader', schedHeader)
   .directive('loginModal', loginModal)
+  .directive('userExists', ['User', userExists])
   .directive('schedMenuTimeForm', schedMenuTimeForm)
   .directive('schedMenuForm', schedMenuForm)
   .directive('schedMenuLink', schedMenuLink)
