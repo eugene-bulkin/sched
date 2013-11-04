@@ -1,0 +1,10 @@
+div
+  input.timeInput(type='text', name='clsTimeFrom', ng-model='time.start', time-picker)
+  | to
+  input.timeInput(type='text', name='clsTimeTo', ng-model='time.end', time-picker)
+  br
+  input(type='text', name='clsInstructor', placeholder='Instructor', ng-model='time.instructor')
+  input(type='text', name='clsLocation', placeholder='Location', ng-model='time.location')
+  .dayButtons
+    button(type='button', ng-repeat='day in [1,2,3,4,5]', ng-class='(time.days[day]) ? \'selected\' : \'\'', ng-click='time.days[day] = !time.days[day]')
+      {{days[day]}}

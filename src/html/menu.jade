@@ -1,0 +1,15 @@
+#menuwrap(ng-controller='SchedMenuCtrl')
+    #menuicon(ng-click='toggleMenu()')
+        svg(viewbox='0 0 70 100')
+          rect(x='10', y='20', width='50', height='60', rx='15', fill='transparent', stroke-width='6')
+          rect(x='20', width='30', y='35', height='1', stroke-width='4', rx='1')
+          rect(x='20', width='30', y='50', height='1', stroke-width='4', rx='1')
+          rect(x='20', width='30', y='65', height='1', stroke-width='4', rx='1')
+    #menu.menu-screen
+      span.title
+        | Your Classes
+      ul
+        sched-menu-link(ng-repeat='class in classes', id='cls-{{$index}}')
+        li.new-class(ng-click='addClass()') Add a New Class
+    #class-forms
+      sched-menu-form(ng-repeat='class in classes', id='cls-frm-{{$index}}')

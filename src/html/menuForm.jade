@@ -1,0 +1,27 @@
+.menu-screen.cls-form
+    button.close(ng-click='closeForm()')
+        svg(viewbox='0 0 15 20')
+          path(d='M 0 0 L 15 10 L 0 20 L 0 17 L 10 10 L 0 3 Z')
+    form
+      .generalInfo
+        input(type='text', name='clsName', ng-model='class.name', placeholder='Class name')
+        br
+        color-picker-button(ng-model='class.color')
+        input(type='text', name='clsSect', ng-model='class.section', placeholder='Section')
+      .times-nav
+        table
+          tr
+            td
+              svg(viewbox='0 0 20 20', ng-class='(prevActive()) ? \'active\' : \'\'', ng-click='selectedTime = selectedTime - ((prevActive()) ? 1 : 0)')
+                path(d='M 20 0 L 5 10 L 20 20 L 15 10 Z')
+            td
+              button.timeDelete(type='button', ng-class='(delActive()) ? \'active\' : \'\'', ng-click='delTime()')
+                | X
+            td
+              button.timeAdd.active(type='button', ng-click='addTime()')
+                | +
+            td
+              svg(viewbox='0 0 20 20', ng-class='(nextActive()) ? \'active\' : \'\'', ng-click='selectedTime = selectedTime + ((nextActive()) ? 1 : 0)')
+                path(d='M 0 0 L 15 10 L 0 20 L 5 10 Z')
+      .cls-time
+        sched-menu-time-form(id='smtf-{{$parent.$index}}-{{$index}}', ng-repeat='time in class.times', ng-show='$index == selectedTime')

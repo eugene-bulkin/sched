@@ -34,11 +34,36 @@ module.exports = (grunt) ->
       styles: {
         files: ['src/css/*.scss'],
         tasks: ['sass']
+      },
+      templates: {
+        files: ['src/html/*.jade'],
+        tasks: ['jade']
       }
     },
     shell: {
       codo: {
         command: 'codo -n "sched" --title "sched documentation" --cautious src/js/'
+      }
+    },
+    jade: {
+      dist: {
+        options: {
+          pretty: true,
+          doctype: '5'
+        },
+        files: [{
+            expand: true,
+            cwd: 'src/html/'
+            src: ['*.jade', '!index.jade'],
+            dest: 'build/partials',
+            ext: '.html'
+        },{
+            expand: true,
+            cwd: 'src/html/',
+            src: 'index.jade',
+            dest: './',
+            ext: '.html'
+        }]
       }
     }
   })
@@ -48,7 +73,9 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks('grunt-contrib-sass')
   grunt.loadNpmTasks('grunt-contrib-watch')
   grunt.loadNpmTasks('grunt-contrib-coffee')
+  grunt.loadNpmTasks('grunt-contrib-jade')
   grunt.loadNpmTasks('grunt-shell')
 
   # Default task(s).
-  grunt.registerTask('default', ['coffeelint', 'coffee', 'sass', 'watch', 'shell:codo'])
+  grunt.registerTask('default', ['coffeelint', 'coffee', 'sass', 'jade', 'shell:codo', 'watch'])
+  grunt.registerTask('build', ['coffeelint', 'coffee', 'sass', 'jade', 'shell:codo'])

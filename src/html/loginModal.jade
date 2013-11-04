@@ -1,0 +1,38 @@
+.modal(ng-show='showLogin', ng-controller='SchedHeaderCtrl')
+    .modal-content
+        #close-button
+          svg(viewbox='0 0 20 20')
+            rect(x='0', y='8', width='20', height='4', transform='rotate(45 10 10)')
+            rect(x='8', y='0', width='4', height='20', transform='rotate(45 10 10)')
+        #login-view.login-screen(ng-if='login')
+          .left
+            form(ng-submit='processLogin()', name='loginForm')
+              label
+                | Username:
+                input(ng-model='username', type='text')
+              label
+                | Password:
+                input(ng-model='password', type='password')
+              button(type='submit') Log In
+            .error(ng-if='errorMsg') {{errorMsg}}
+          .right
+            | Don't have an account?
+            br
+            br
+            button(role='button', ng-click='toggleRegister()') Click Here to Register!
+        #register-view.login-screen(ng-if='!login')
+          .left
+            form(ng-submit='processRegister()', name='registerForm')
+              label
+                | Username:
+                input(ng-model='username', type='text', ng-pattern='/^[a-zA-Z0-9_]+$/', required='required', user-exists='user-exists')
+              label
+                | Password:
+                input(ng-model='password', type='password', required='required', ng-minlength='4')
+              button(type='submit', ng-disabled='register.$invalid') Register
+            .error(ng-if='errorMsg') {{errorMsg}}
+          .right
+            | Already have an account?
+            br
+            br
+            button(role='button', ng-click='toggleRegister()') Go Back

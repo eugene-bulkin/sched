@@ -1,0 +1,29 @@
+#display(ng-controller='SchedDisplayCtrl')
+    ul
+        li
+          span M
+        li
+          span T
+        li
+          span W
+        li
+          span R
+        li
+          span F
+      #view
+        #grid.display-view
+          table
+            tr(ng-repeat='i in [1,2,3,4,5]')
+              td(ng-repeat='j in range(2 * totalTime)')
+            tr.times
+              td
+              td(colspan='2', ng-repeat='i in range(8,23)')
+                span {{i}}:00
+        #classes.display-view
+          .clsBox(ng-repeat='cls in classList', ng-style='getStyle(cls)', ng-click='clickClass(cls)', ng-controller='SchedClassCtrl')
+            span
+              b {{cls.name}}
+              br
+              | {{cls.location || 'TBD'}}
+              br
+              | {{cls.instructor || 'TBD'}}

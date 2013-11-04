@@ -1,3 +1,5 @@
+templateDir = 'build/partials/'
+
 ###
 A directive for handling the color palette. Handles issue with ng-repeat and
 scope handling.
@@ -43,7 +45,7 @@ colorPicker = () ->
   {
     restrict: 'E',
     replace: true,
-    templateUrl: 'partials/colorPicker.html',
+    templateUrl: templateDir + 'colorPicker.html',
     link: (scope, element, attrs) ->
   }
 
@@ -55,7 +57,7 @@ schedHeader = () ->
     restrict: 'E',
     replace: false,
     controller: SchedHeaderCtrl,
-    templateUrl: 'partials/header.html',
+    templateUrl: templateDir + 'header.html',
     link: (scope, element, attrs) ->
       $("#login").on 'click', () ->
         $(document).on "keyup", scope.closeModal
@@ -72,7 +74,7 @@ loginModal = () ->
     restrict: 'E',
     replace: true,
     controller: SchedHeaderCtrl
-    templateUrl: 'partials/loginModal.html'
+    templateUrl: templateDir + 'loginModal.html'
     link: (scope, element, attrs) ->
       $("#close-button").on 'click', () ->
         $scope.showLogin = false
@@ -100,7 +102,7 @@ schedMenuForm = () ->
   {
     restrict: 'E',
     replace: true,
-    templateUrl: 'partials/menuForm.html',
+    templateUrl: templateDir + 'menuForm.html',
     link: (scope, element, attrs) ->
       element.find('button.close').on('click', () ->
         $(this).parent().toggleClass("open selected")
@@ -135,7 +137,7 @@ schedMenuTimeForm = () ->
   {
     restrict: 'EA',
     replace: true,
-    templateUrl: 'partials/menuTimeForm.html',
+    templateUrl: templateDir + 'menuTimeForm.html',
     link: (scope, element, attrs) ->
   }
 
@@ -146,7 +148,7 @@ schedMenuLink = () ->
   {
     restrict: 'E',
     replace: true,
-    templateUrl: 'partials/menuLink.html',
+    templateUrl: templateDir + 'menuLink.html',
     link: (scope, element, attrs) ->
       element.on('click', () ->
         frm = $("#cls-frm-" + this.id.replace("cls-",""))
@@ -164,7 +166,7 @@ schedMenu = () ->
   {
     restrict: 'E',
     replace: true,
-    templateUrl: 'partials/menu.html',
+    templateUrl: templateDir + 'menu.html',
     link: (scope, element, attrs) ->
       $("#menuicon").on('click', () ->
         toOpen = "#menu, #menuicon, .cls-form.open, .cls-form.selected"
@@ -180,7 +182,7 @@ schedDisplay = () ->
   {
     restrict: 'E',
     replace: true,
-    templateUrl: 'partials/display.html',
+    templateUrl: templateDir + 'display.html',
     link: (scope, element, attrs) ->
   }
 
