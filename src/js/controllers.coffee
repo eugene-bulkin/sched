@@ -197,6 +197,7 @@ SchedHeaderCtrl = ($scope, User) ->
       $(this).unbind "keyup"
   $scope.processLogin = () ->
     form = @loginForm
+    scope = this
     User.login({
       username: @username,
       password: @password
@@ -206,6 +207,8 @@ SchedHeaderCtrl = ($scope, User) ->
         $scope.showLogin = false
         $(document).unbind "keyup"
         # TODO: reset form
+        scope.username = ''
+        scope.password = ''
         form.$setPristine()
         # TODO: update header to reflect login
     , (error) ->
@@ -213,6 +216,7 @@ SchedHeaderCtrl = ($scope, User) ->
     )
   $scope.processRegister = () ->
     form = @registerForm
+    scope = this
     User.register({
       username: @username,
       password: @password
@@ -222,6 +226,8 @@ SchedHeaderCtrl = ($scope, User) ->
         $scope.showLogin = false
         $(document).unbind "keyup"
         # TODO: reset form
+        scope.username = ''
+        scope.password = ''
         form.$setPristine()
         # TODO: update header to reflect login
     , (error) ->
