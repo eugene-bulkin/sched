@@ -1,5 +1,11 @@
 <div class="modal" ng-show="showLogin" ng-controller="SchedHeaderCtrl">
   <div class="modal-content">
+    <div id="close-button">
+      <svg viewBox="0 0 20 20">
+        <rect x="0" y="8" width="20" height="4" transform="rotate(45 10 10)" />
+        <rect x="8" y="0" width="4" height="20" transform="rotate(45 10 10)" />
+      </svg>
+    </div>
     <div ng-if="login" class="login-screen" id="login-view">
       <div class="left">
         <form ng-submit="processLogin()" name="loginForm">
