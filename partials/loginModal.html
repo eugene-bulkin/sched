@@ -22,7 +22,7 @@
     <div ng-if="!login" class="login-screen" id="register-view">
       <div class="left">
         <form ng-submit="processRegister()" name="registerForm">
-          <label>Username: <input ng-model="username" type="text" required user-exists /></label>
+          <label>Username: <input ng-model="username" type="text" ng-pattern="/^[a-zA-Z0-9_]+$/" required user-exists /></label>
           <label>Password: <input ng-model="password" type="password" required ng-minlength="4" /></label>
           <button type="submit" ng-disabled="register.$invalid">Register</button>
         </form>
