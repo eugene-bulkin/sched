@@ -185,6 +185,12 @@ SchedDisplayCtrl = ($scope) ->
   , true)
   return
 
+###
+The controller for the header element
+
+@param {Object} $scope
+@param {Object} User
+###
 SchedHeaderCtrl = ($scope, User) ->
   $scope.showLogin = false
   $scope.login = true
