@@ -9,7 +9,8 @@ module.exports = (grunt) ->
     sass: {
       dist: {
         options: {
-          style: 'expanded'
+          style: 'expanded',
+          sourcemap: true
         },
         files: {
           'build/style.css': 'src/css/style.scss'
@@ -19,7 +20,8 @@ module.exports = (grunt) ->
     coffee: {
       compileJoined: {
         options: {
-          join: true
+          join: true,
+          sourceMap: true
         },
         files: {
           'build/sched.js': ['src/js/*.coffee']
