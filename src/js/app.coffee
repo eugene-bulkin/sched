@@ -4,11 +4,14 @@ which it binds
 ###
 colorPickerPlace = () ->
   btnO = $(".cls-form.open").find("button[name='clsColor']").offset()
-  cntO = $("#content").offset()
-  $('#colors').css({
-    top: btnO.top - cntO.top,
-    left: btnO.left - cntO.left
-  })
+  if btnO
+    cntO = $("#content").offset()
+    $('#colors').css({
+      top: btnO.top - cntO.top,
+      left: btnO.left - cntO.left
+    })
+    true
+  false
 
 angular.module('sched',
   ['ngRoute', 'ngResource', 'ngAnimate', 'sched.directives', 'sched.controllers', 'sched.factories'],
