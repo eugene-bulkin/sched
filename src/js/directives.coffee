@@ -187,6 +187,22 @@ schedDisplay = () ->
   }
 
 ###
+A directive for the schedule options menu
+###
+schedScheduleOptions = (Schedule, $location) ->
+  {
+    restrict: 'E',
+    replace: true,
+    templateUrl: templateDir + 'scheduleOptions.html',
+    link: (scope, element, attrs) ->
+      element.find('button').on 'click', () ->
+        Schedule.update {
+          id: scope.sched._id
+          }, scope.sched, (resp) ->
+            $location.path('/view/' + resp._id)
+  }
+
+###
 A directive for a timepicker.
 
 @see http://jonthornton.github.io/jquery-timepicker/
@@ -227,3 +243,4 @@ angular.module('sched.directives', [])
   .directive('schedMenuLink', schedMenuLink)
   .directive('schedMenu', schedMenu)
   .directive('schedDisplay', schedDisplay)
+  .directive('schedScheduleOptions', ['Schedule', '$location', schedScheduleOptions])

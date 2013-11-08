@@ -22,6 +22,7 @@ The schedule app controller. Keeps track of classes.
 @param [Array] classes The classes loaded by the Schedule factory
 ###
 SchedCtrl = ($scope, sched) ->
+  $scope.sched = sched
   $scope.classes = sched.classes
 
   $scope.colorPalette = chunk([
