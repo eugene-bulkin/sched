@@ -189,7 +189,7 @@ schedDisplay = () ->
 ###
 A directive for the schedule options menu
 ###
-schedScheduleOptions = (Schedule) ->
+schedScheduleOptions = (Schedule, $location) ->
   {
     restrict: 'E',
     replace: true,
@@ -198,7 +198,8 @@ schedScheduleOptions = (Schedule) ->
       element.find('button').on 'click', () ->
         Schedule.update {
           id: scope.sched._id
-          }, scope.sched
+          }, scope.sched, (resp) ->
+            $location.path('/view/' + resp._id)
   }
 
 ###
@@ -242,4 +243,4 @@ angular.module('sched.directives', [])
   .directive('schedMenuLink', schedMenuLink)
   .directive('schedMenu', schedMenu)
   .directive('schedDisplay', schedDisplay)
-  .directive('schedScheduleOptions', ['Schedule', schedScheduleOptions])
+  .directive('schedScheduleOptions', ['Schedule', '$location', schedScheduleOptions])
