@@ -2,6 +2,7 @@ Schedule = ($resource) ->
   $resource('/api/sched/:id', {}, {
     query: {method: 'GET', params: { id: '@id' }, isArray: true},
     post: {method: 'POST'},
+    update: {method: 'PUT', params: { id: '@id' }},
     remove: {method: 'DELETE', params: { id: '@id' }}
   })
 

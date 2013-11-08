@@ -27,14 +27,14 @@ angular.module('sched',
         deferred.promise
     }
     $routeProvider.when('/', {
-      template: '<sched-display></sched-display><sched-menu></sched-menu><color-picker></color-picker>',
+      template: '<sched-schedule-options></sched-schedule-options><sched-display></sched-display><sched-menu></sched-menu><color-picker></color-picker>',
       controller: SchedCtrl,
       resolve: {
         sched: () -> {classes: []} # resolve to empty list if there's no id
       }
     })
     $routeProvider.when('/view/:schedId', {
-      template: '<sched-display></sched-display><sched-menu></sched-menu><color-picker></color-picker>',
+      template: '<sched-schedule-options></sched-schedule-options><sched-display></sched-display><sched-menu></sched-menu><color-picker></color-picker>',
       controller: SchedCtrl,
       resolve: classResolver
     })

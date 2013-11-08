@@ -33,6 +33,23 @@ app.post '/api/sched', (req, res) ->
       if err
         res.send err
       res.json scheds
+app.put '/api/sched', (req, res) ->
+  console.log req.body
+  ###Schedule.find {
+    _id: req.params.schedId
+  }, (err, sched) ->
+    if err
+      res.send err
+    sched.update req.body###
+app.put '/api/sched/:schedId', (req, res) ->
+  obj = {
+    classes: req.body.classes
+  }
+  Schedule.update {
+    _id: req.params.schedId
+  }, obj, (err, num) ->
+    if err
+      res.send err
 app.delete '/api/sched/:schedId', (req, res) ->
   Schedule.remove {
     _id: req.params.schedId
