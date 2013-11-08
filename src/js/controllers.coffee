@@ -25,6 +25,10 @@ SchedCtrl = ($scope, sched) ->
   $scope.sched = sched
   $scope.classes = sched.classes
 
+  $scope.$watch("classes", () ->
+    $scope.sched.classes = $scope.classes
+  , true)
+
   $scope.colorPalette = chunk([
     "#d44", "#f84", "#fe8",
     "#8d8", "#48d", "#a6f",
@@ -103,7 +107,7 @@ SchedDisplayCtrl = ($scope) ->
     result = []
     for cls, clsId in $scope.classes
       for time, timeIndex in cls.times
-        for day in [1..5]
+        for day in "12345".split("")
           if(!time.days[day]) then continue
           clsInfo = {
             name: cls.name,

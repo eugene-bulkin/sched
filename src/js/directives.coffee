@@ -121,7 +121,7 @@ schedMenuForm = () ->
         if scope.selectedTime > scope.class.times.length - 1 then scope.selectedTime -= 1
       scope.addTime = () ->
         scope.class.times.push {
-          days: {1: false, 2: false, 3: false, 4: false, 5: false},
+          days: {"1": false, "2": false, "3": false, "4": false, "5": false},
           start: null,
           end: null,
           location: null,
@@ -139,6 +139,8 @@ schedMenuTimeForm = () ->
     replace: true,
     templateUrl: templateDir + 'menuTimeForm.html',
     link: (scope, element, attrs) ->
+      scope.toggleDay = (day) ->
+        scope.time.days[day] = !scope.time.days[day]
   }
 
 ###
