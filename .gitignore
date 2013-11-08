@@ -1,16 +1,12 @@
-# WebStorm
-.idea
-
-# Build files
-.sass-cache
-node_modules
-src/js/*.js
+node_modules/
+.idea/
+.sass-cache/
+app/build/
 Gruntfile.js
-index.html
-
-*.sublime-*
-
-# Photoshop Files
+server.js
+.nodemonignore
+doc/
+src/js/*
 *.psd
 
 #################

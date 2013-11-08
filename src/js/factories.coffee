@@ -3,6 +3,11 @@ Schedule = ($resource) ->
     id: '@id'
   })
 
+###
+User factory
+@param {Object} $resource
+@param {Object} $q
+###
 User = ($resource, $q) ->
   $resource('user.php', {}, {
     login: {
