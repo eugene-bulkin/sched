@@ -5,7 +5,13 @@ module.exports = (grunt) ->
     # monitoring
     concurrent: {
       dev: {
-        tasks: ['nodemon', 'watch'],
+        tasks: ['nodemon:dev', 'watch'],
+        options: {
+          logConcurrentOutput: true
+        }
+      },
+      production: {
+        tasks: ['nodemon:production']
         options: {
           logConcurrentOutput: true
         }
@@ -24,6 +30,18 @@ module.exports = (grunt) ->
           cwd: __dirname
         }
       },
+      production: {
+        options: {
+          file: 'server.coffee',
+          ignoredFiles: ['README.md', 'node_modules/**'],
+          delayTime: 1,
+          legacyWatch: true,
+          env: {
+            PORT: '3001'
+          },
+          cwd: __dirname
+        }
+      }
     },
     watch: {
       scripts: {
@@ -104,4 +122,5 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks('grunt-shell')
 
   grunt.registerTask('compile', ['coffeelint', 'coffee','sass','jade', 'shell:codo'])
-  grunt.registerTask('default', ['compile', 'concurrent'])
+  grunt.registerTask('default', ['compile', 'concurrent:dev'])
+  grunt.registerTask('production', ['compile', 'concurrent:production'])
