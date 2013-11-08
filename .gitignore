@@ -8,6 +8,7 @@ server.js
 doc/
 src/js/*
 *.psd
+*.sublime*
 
 #################
 ## Eclipse
