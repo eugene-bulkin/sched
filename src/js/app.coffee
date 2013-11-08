@@ -17,10 +17,10 @@ angular.module('sched',
   ['ngRoute', 'ngResource', 'ngAnimate', 'sched.directives', 'sched.controllers', 'sched.factories'],
   ($routeProvider) ->
     classResolver = {
-      classes: (Schedule, $q, $route) ->
+      sched: (Schedule, $q, $route) ->
         deferred = $q.defer()
         Schedule.query({ id: $route.current.params.schedId }, (data) ->
-          deferred.resolve(data)
+          deferred.resolve(data[0])
         , (reason) ->
           deferred.reject()
         )
@@ -30,7 +30,7 @@ angular.module('sched',
       template: '<sched-display></sched-display><sched-menu></sched-menu><color-picker></color-picker>',
       controller: SchedCtrl,
       resolve: {
-        classes: () -> [] # resolve to empty list if there's no id
+        sched: () -> {classes: []} # resolve to empty list if there's no id
       }
     })
     $routeProvider.when('/view/:schedId', {

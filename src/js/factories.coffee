@@ -1,6 +1,8 @@
 Schedule = ($resource) ->
-  $resource('schedule.php?id=:id', {
-    id: '@id'
+  $resource('/api/sched/:id', {}, {
+    query: {method: 'GET', params: { id: '@id' }, isArray: true},
+    post: {method: 'POST'},
+    remove: {method: 'DELETE', params: { id: '@id' }}
   })
 
 ###

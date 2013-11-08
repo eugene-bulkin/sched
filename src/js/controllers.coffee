@@ -21,67 +21,8 @@ The schedule app controller. Keeps track of classes.
 @param [Object] $scope
 @param [Array] classes The classes loaded by the Schedule factory
 ###
-SchedCtrl = ($scope, classes) ->
-  $scope.classes = classes
-  testClasses = [
-    {
-       name: "Ma 5a",
-       section: 1,
-       color: "#f84",
-       times: [{
-            days: {1: true, 2: false, 3: true, 4: false, 5: true},
-            start: "09:00",
-            end: "09:55",
-            location: "151 SLN",
-            instructor: null
-        }]
-    },
-    {
-       name: "Ma 108a",
-       section: 1,
-       color: "#48f",
-       times: [{
-            days: {1: true, 2: false, 3: true, 4: false, 5: true},
-            start: "11:00",
-            end: "11:55",
-            location: "151 SLN",
-            instructor: null
-        }]
-    },
-    {
-      name: "Ma 6a",
-      section: 1,
-      color: "#4f8",
-      times: [{
-        days: {1: true, 2: false, 3: true, 4: false, 5: true},
-        start: "13:00",
-        end: "13:55",
-        location: "151 SLN",
-        instructor: null
-      }]
-    },
-    {
-      name: "Ph 2a",
-      section: 1,
-      color: "#4f8",
-      times: [
-        {
-          days: {1: false, 2: true, 3: false, 4: true, 5: false},
-          start: "11:30",
-          end: "12:55",
-          location: "151 SLN",
-          instructor: null
-        },
-        {
-          days: {1: false, 2: false, 3: false, 4: false, 5: true},
-          start: "15:00",
-          end: "15:55",
-          location: "151 SLN",
-          instructor: null
-        }
-      ]
-    }
-  ]
+SchedCtrl = ($scope, sched) ->
+  $scope.classes = sched.classes
 
   $scope.colorPalette = chunk([
     "#d44", "#f84", "#fe8",
