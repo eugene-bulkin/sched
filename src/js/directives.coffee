@@ -104,10 +104,17 @@ schedMenuForm = () ->
     replace: true,
     templateUrl: templateDir + 'menuForm.html',
     link: (scope, element, attrs) ->
-      element.find('button.close').on('click', () ->
-        $(this).parent().toggleClass("open selected")
+      closeCallback = () ->
+        $(element).toggleClass("open selected")
         if $("#colors") then $("#colors").hide()
-      )
+      $(element).find('button.clsDelete').on 'click', () ->
+        closeCallback()
+        $("li#cls-" + scope.$index).hide()
+        scope.$parent.classes.splice(scope.$index)
+        $(element).on 'transitionend webkitTransitionEnd oTransitionEnd otransitionend', () ->
+          $(element).unbind 'transitionend webkitTransitionEnd oTransitionEnd otransitionend'
+          scope.$apply()
+      element.find('button.close').on 'click', closeCallback
       scope.$parent.$on('class-click', (e, args...) ->
         scope.selectedTime = args[0]
       )

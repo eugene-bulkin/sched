@@ -4,10 +4,17 @@
           path(d='M 0 0 L 15 10 L 0 20 L 0 17 L 10 10 L 0 3 Z')
     form
       .generalInfo
-        input(type='text', name='clsName', ng-model='class.name', placeholder='Class name')
-        br
-        color-picker-button(ng-model='class.color')
-        input(type='text', name='clsSect', ng-model='class.section', placeholder='Section')
+        table
+          tr
+            td(colspan=3)
+              input(type='text', name='clsName', ng-model='class.name', placeholder='Class name')
+            td(colspan=2)
+              button.clsDelete Delete
+          tr
+            td(colspan=2)
+              color-picker-button(ng-model='class.color')
+            td(colspan=3)
+              input(type='text', name='clsSect', ng-model='class.section', placeholder='Section')
       .times-nav
         table
           tr
