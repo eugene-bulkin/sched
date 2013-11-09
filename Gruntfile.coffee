@@ -4,18 +4,8 @@ module.exports = (grunt) ->
     pkg: grunt.file.readJSON('package.json'),
     # monitoring
     concurrent: {
-      dev: {
-        tasks: ['nodemon:dev', 'watch'],
-        options: {
-          logConcurrentOutput: true
-        }
-      },
-      production: {
-        tasks: ['nodemon:production']
-        options: {
-          logConcurrentOutput: true
-        }
-      }
+      dev: ['nodemon:dev', 'watch']
+      production: ['nodemon:production']
     },
     nodemon: {
       dev: {
