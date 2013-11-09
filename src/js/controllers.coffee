@@ -59,6 +59,8 @@ The schedule class controller.
 @param [Object] $scope
 ###
 SchedClassCtrl = ($scope) ->
+  $scope.hasTimes = (cls) ->
+    $scope.timeDiff(cls.start, cls.end) > 0
   $scope.clickClass = (cls) ->
     $scope.$emit('class-click', cls.tId)
     if !$('#menu').hasClass('open')
@@ -89,6 +91,7 @@ The schedule display controller.
 ###
 SchedDisplayCtrl = ($scope) ->
   $scope.timeDiff = (start, end) ->
+    if !start or !end then return 0
     toMins = (p, n, i) -> p + Math.pow(60, 1 - i) * n
     end.split(":").reduce(toMins, 0) - start.split(":").reduce(toMins, 0)
 
