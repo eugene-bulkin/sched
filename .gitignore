@@ -3,11 +3,12 @@ node_modules/
 .sass-cache/
 app/build/
 app/index.html
+routes/*.js
 Gruntfile.js
 server.js
 .nodemonignore
 doc/
-src/js/*
+src/js/*.js
 *.psd
 *.sublime-*
 
