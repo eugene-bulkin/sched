@@ -205,6 +205,7 @@ schedScheduleOptions = (Schedule, $location) ->
     templateUrl: templateDir + 'scheduleOptions.html',
     link: (scope, element, attrs) ->
       element.find('.saveIcon').on 'click', () ->
+        if $(@).hasClass('disabled') then return
         Schedule.update {
           id: scope.sched._id
           }, scope.sched, (resp) ->

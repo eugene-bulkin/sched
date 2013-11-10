@@ -136,23 +136,29 @@ $primary: #0066ff;
   }
   div.saveIcon {
     position: absolute;
-    right: 0;
-    top: 1em;
-    width: 7em;
-    padding: 2em 1em;
-    padding-left: 1.5em;
-    height: 8em;
+    left: 0;
+    top: 0.5em;
+    width: 5em;
+    padding: 1em 0.75em;
+    padding-right: 1em;
+    height: 6em;
+    cursor: pointer;
     @include trans(0.3s ease-in-out);
-    @include missing-corners(1.5em, top-right, bottom-right);
+    @include missing-corners(1.5em, top-left, bottom-left);
     svg {
       width: 100%;
       @include svg-twocolor(#fff, $primary);
     }
-    &:hover {
+    &:not(.disabled):hover {
       background-color: $primary;
-      cursor: pointer;
       svg {
         @include svg-twocolor($primary, #fff);
+      }
+    }
+    &.disabled {
+      cursor: default;
+      svg {
+        @include svg-twocolor(#fff, #888);
       }
     }
   }
