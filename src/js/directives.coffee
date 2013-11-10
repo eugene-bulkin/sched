@@ -204,7 +204,7 @@ schedScheduleOptions = (Schedule, $location) ->
     replace: true,
     templateUrl: templateDir + 'scheduleOptions.html',
     link: (scope, element, attrs) ->
-      element.find('button').on 'click', () ->
+      element.find('.saveIcon').on 'click', () ->
         Schedule.update {
           id: scope.sched._id
           }, scope.sched, (resp) ->

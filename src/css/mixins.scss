@@ -1,3 +1,14 @@
+@mixin svg-twocolor($fore, $back) {
+  .fore {
+    fill: $fore;
+    stroke: $fore;
+  }
+  .back {
+    fill: $back;
+    stroke: $back;
+  }
+}
+
 @mixin svg-button($color) {
   &:hover {
     path {

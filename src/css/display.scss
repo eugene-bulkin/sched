@@ -115,3 +115,46 @@ $time-height: 25px;
     }
   }
 }
+
+$primary: #0066ff;
+#schedOptions {
+  input[type='text'] {
+    display: block;
+    margin: 0 auto;
+    padding: 0.25em;
+    font-size: 2em;
+    border-radius: 8px;
+    border: 1px solid transparent;
+
+    &:hover {
+      border-color: #ccc;
+    }
+
+    &:focus {
+      border-color: #888;
+      background-color: #f8f8f8;
+    }
+  }
+  div.saveIcon {
+    position: absolute;
+    right: 0;
+    top: 1em;
+    width: 7em;
+    padding: 2em 1em;
+    padding-left: 1.5em;
+    height: 8em;
+    @include trans(0.3s ease-in-out);
+    @include missing-corners(1.5em, top-right, bottom-right);
+    svg {
+      width: 100%;
+      @include svg-twocolor(#fff, $primary);
+    }
+    &:hover {
+      background-color: $primary;
+      cursor: pointer;
+      svg {
+        @include svg-twocolor($primary, #fff);
+      }
+    }
+  }
+}
