@@ -38,6 +38,10 @@ module.exports = (grunt) ->
         files: 'src/js/*.coffee',
         tasks: ['coffeelint', 'coffee', 'shell:codo']
       },
+      routes: {
+        files: 'routes/*.coffee',
+        tasks: ['coffeelint:routes', 'coffee:routes']
+      }
       styles: {
         files: ['src/css/*.scss'],
         tasks: ['sass']
@@ -49,7 +53,8 @@ module.exports = (grunt) ->
     },
     # processing
     coffeelint: {
-      app: ['src/*.coffee']
+      app: ['src/*.coffee'],
+      routes: ['routes/*.coffee']
     },
     shell: {
       codo: {
@@ -77,6 +82,14 @@ module.exports = (grunt) ->
         files: {
           'app/build/sched.js': 'src/js/*.coffee'
         }
+      },
+      routes: {
+        expand: true,
+        flatten: true,
+        cwd: 'routes/',
+        src: ['*.coffee'],
+        dest: 'routes/',
+        ext: '.js'
       }
     },
     jade: {

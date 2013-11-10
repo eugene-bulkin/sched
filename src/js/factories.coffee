@@ -6,12 +6,30 @@ Schedule = ($resource) ->
     remove: {method: 'DELETE', params: { id: '@id' }}
   })
 
+User = ($resource) ->
+  $resource('/api/user/:id', {}, {
+  })
+
+Login = ($resource) ->
+  $resource('/api/login/:mode', {}, {
+    login: {
+      method: 'POST',
+      params: {mode: 'login' },
+      interceptor: {
+        response: (resp) ->
+          resp
+        responseError: (resp) ->
+          resp
+      }
+    }
+  })
+
 ###
 User factory
 @param {Object} $resource
 @param {Object} $q
 ###
-User = ($resource, $q) ->
+###User = ($resource, $q) ->
   $resource('user.php', {}, {
     login: {
       method: 'POST',
@@ -40,8 +58,9 @@ User = ($resource, $q) ->
         data
       params: {mode: 'exists'}
     }
-  })
+  })###
 
 angular.module('sched.factories', [])
   .factory('Schedule', Schedule)
+  .factory('Login', Login)
   .factory('User', User)

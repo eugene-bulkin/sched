@@ -13,10 +13,10 @@
     "grunt-contrib-sass": "*",
     "grunt-contrib-jade": "*",
     "grunt-coffeelint": "*",
-    "shell": "*",
     "nodemon": "*",
     "grunt-concurrent": "*",
     "grunt-contrib-watch": "*",
-    "grunt-shell": "*"
+    "grunt-shell": "*",
+    "bcrypt-nodejs": "*"
   }
 }
