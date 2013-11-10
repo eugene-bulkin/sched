@@ -24,6 +24,7 @@ The schedule app controller. Keeps track of classes.
 SchedCtrl = ($scope, sched) ->
   $scope.sched = sched
   $scope.classes = sched.classes
+  $scope.modified = false
 
   $scope.$watch("classes", () ->
     $scope.sched.classes = $scope.classes

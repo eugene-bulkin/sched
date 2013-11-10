@@ -210,6 +210,10 @@ schedScheduleOptions = (Schedule, $location) ->
           id: scope.sched._id
           }, scope.sched, (resp) ->
             $location.path('/view/' + resp._id)
+            scope.modified = false
+      element.find('input').on 'change', () ->
+        scope.modified = true
+        scope.$apply()
   }
 
 ###
