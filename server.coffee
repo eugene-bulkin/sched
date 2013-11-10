@@ -12,6 +12,7 @@ app.configure () ->
 
 # Models
 Schedule = mongoose.model 'Schedule', {
+  name: String,
   classes: Array
 }
 
@@ -23,18 +24,9 @@ app.get '/api/sched/:schedId', (req, res) ->
     if err
       res.send err
     res.json sched
-app.post '/api/sched', (req, res) ->
-  Schedule.create {
-    classes: []
-  }, (err, sched) ->
-    if err
-      res.send err
-    Schedule.find (err, scheds) ->
-      if err
-        res.send err
-      res.json scheds
 app.put '/api/sched', (req, res) ->
   obj = {
+    name: req.body.name,
     classes: req.body.classes
   }
   Schedule.create obj, (err, sched) ->
@@ -43,6 +35,7 @@ app.put '/api/sched', (req, res) ->
     res.json sched
 app.put '/api/sched/:schedId', (req, res) ->
   obj = {
+    name: req.body.name,
     classes: req.body.classes
   }
   Schedule.update {
