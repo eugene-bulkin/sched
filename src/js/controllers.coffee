@@ -26,8 +26,10 @@ SchedCtrl = ($scope, sched) ->
   $scope.classes = sched.classes
   $scope.modified = false
 
-  $scope.$watch("classes", () ->
+  $scope.$watch("classes", (newVal, oldVal) ->
+    if newVal is oldVal then return
     $scope.sched.classes = $scope.classes
+    $scope.modified = true
   , true)
 
   $scope.colorPalette = chunk([
