@@ -1,5 +1,5 @@
 #schedOptions
-  input(type='text', ng-model='sched.name')
+  input(type='text', ng-model='sched.name', placeholder='Untitled')
   .saveIcon(ng-class='(sched.name || sched.classes.length) ? "" : "disabled"')
     svg(viewBox='0 0 30 30')
       path.back(d='M 1 0 L 1 30 L 29 30 L 29 4 L 25 0 Z')
