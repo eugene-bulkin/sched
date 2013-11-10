@@ -2,6 +2,7 @@ node_modules/
 .idea/
 .sass-cache/
 app/build/
+app/index.html
 Gruntfile.js
 server.js
 .nodemonignore
