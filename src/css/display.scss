@@ -124,12 +124,11 @@ $primary: #0066ff;
     padding: 0.25em;
     font-size: 2em;
     border-radius: 8px;
-    border: 1px solid transparent;
-
+    border: 1px solid #fcfcfc;
+    font-weight: bold;
     &:hover {
       border-color: #ccc;
     }
-
     &:focus {
       border-color: #888;
       background-color: #f8f8f8;
