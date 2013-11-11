@@ -59,11 +59,11 @@ schedHeader = () ->
     controller: SchedHeaderCtrl,
     templateUrl: templateDir + 'header.html',
     link: (scope, element, attrs) ->
-      $("#login").on 'click', () ->
+      scope.openLogin = () ->
         $(document).on "keyup", scope.closeModal
         scope.showLogin = true
-        scope.$apply()
-
+      scope.logout = () ->
+        return
   }
 
 ###
@@ -73,8 +73,7 @@ loginModal = () ->
   {
     restrict: 'E',
     replace: true,
-    controller: SchedHeaderCtrl
-    templateUrl: templateDir + 'loginModal.html'
+    templateUrl: templateDir + 'loginModal.html',
     link: (scope, element, attrs) ->
       $("#close-button").on 'click', () ->
         $scope.showLogin = false

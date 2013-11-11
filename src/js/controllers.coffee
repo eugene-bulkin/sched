@@ -21,10 +21,11 @@ The schedule app controller. Keeps track of classes.
 @param [Object] $scope
 @param [Array] classes The classes loaded by the Schedule factory
 ###
-SchedCtrl = ($scope, sched) ->
+SchedCtrl = ($scope, $rootScope, sched, currentUser) ->
   $scope.sched = sched
   $scope.classes = sched.classes
   $scope.modified = false
+  $scope.$emit('user-loaded', currentUser)
 
   $scope.$watch("classes", (newVal, oldVal) ->
     if newVal is oldVal then return
@@ -148,6 +149,10 @@ SchedHeaderCtrl = ($scope, User, Login) ->
   $scope.login = true
   $scope.errorMsg = null
   $scope.loginForm = null
+  $scope.currentUser = null
+  $scope.$on 'user-loaded', (e, user) ->
+    # for some rason, angular returns "null" if null is sent...
+    $scope.currentUser = if user is "null" then null else user
   $scope.closeModal = (e) ->
     if e.keyCode is 27 #close on Esc key
       $scope.showLogin = false
@@ -168,15 +173,19 @@ SchedHeaderCtrl = ($scope, User, Login) ->
         scope.password = ''
         form.$setPristine()
         # TODO: update header to reflect login
+        $scope.currentUser = {
+          username: response.data.username
+        }
     , (error) ->
       $scope.errorMsg = error.data
   $scope.processRegister = () ->
     form = @registerForm
     scope = this
-    User.register({
+    Login.register {
       username: @username,
       password: @password
-    }, (response) ->
+    }
+    ###, (response) ->
       if response.data is "register_success"
         # if success, close the modal
         $scope.showLogin = false
@@ -188,8 +197,7 @@ SchedHeaderCtrl = ($scope, User, Login) ->
         # TODO: update header to reflect login
     , (error) ->
       $scope.errorMsg = error.data
-    )
-
+    )###
 
 angular.module('sched.controllers', [])
   .controller('SchedCtrl', SchedCtrl, ['$scope'])

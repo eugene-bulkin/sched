@@ -15,6 +15,17 @@ Login = ($resource) ->
     login: {
       method: 'POST',
       params: {mode: 'login' },
+      responseType: 'json',
+      interceptor: {
+        response: (resp) ->
+          resp
+        responseError: (resp) ->
+          resp
+      }
+    },
+    currentUser: {
+      method: 'GET',
+      responseType: 'json',
       interceptor: {
         response: (resp) ->
           resp

@@ -16,27 +16,37 @@ colorPickerPlace = () ->
 angular.module('sched',
   ['ngRoute', 'ngResource', 'ngAnimate', 'sched.directives', 'sched.controllers', 'sched.factories'],
   ($routeProvider) ->
-    classResolver = {
-      sched: (Schedule, $q, $route) ->
-        deferred = $q.defer()
-        Schedule.query({ id: $route.current.params.schedId }, (data) ->
-          deferred.resolve(data[0])
-        , (reason) ->
-          deferred.reject()
-        )
-        deferred.promise
-    }
+    classResolver = (Schedule, $q, $route) ->
+      deferred = $q.defer()
+      Schedule.query({ id: $route.current.params.schedId }, (data) ->
+        deferred.resolve(data[0])
+      , (reason) ->
+        deferred.reject()
+      )
+      deferred.promise
+    loginResolver = (Login, $q, $route) ->
+      deferred = $q.defer()
+      Login.currentUser({}, (data) ->
+        deferred.resolve(data.data)
+      , (reason) ->
+        deferred.reject()
+      )
+      deferred.promise
     $routeProvider.when('/', {
       template: '<sched-schedule-options></sched-schedule-options><sched-display></sched-display><sched-menu></sched-menu><color-picker></color-picker>',
       controller: SchedCtrl,
       resolve: {
-        sched: () -> {classes: []} # resolve to empty list if there's no id
+        sched: () -> {classes: []}, # resolve to empty list if there's no id
+        currentUser: loginResolver
       }
     })
     $routeProvider.when('/view/:schedId', {
       template: '<sched-schedule-options></sched-schedule-options><sched-display></sched-display><sched-menu></sched-menu><color-picker></color-picker>',
       controller: SchedCtrl,
-      resolve: classResolver
+      resolve: {
+        sched: classResolver,
+        currentUser: loginResolver
+      }
     })
     $routeProvider.otherwise({
       redirectTo: '/'

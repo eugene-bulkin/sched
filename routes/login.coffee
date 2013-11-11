@@ -1,6 +1,11 @@
 bcrypt = require('bcrypt-nodejs')
 
 module.exports = (app, User) ->
+  app.get '/api/login', (req, res) ->
+    if req.session.loggedIn
+      res.json req.session.curUser
+    else
+      res.json null
   app.get '/api/login/logout', (req, res) ->
     if !req.session.loggedIn
       res.send "not_logged_in"
@@ -28,7 +33,7 @@ module.exports = (app, User) ->
         res.send "incorrect_password"
         return
       req.session.loggedIn = true
-      req.session.curUser = user
+      req.session.curUser = { username: user.username }
       res.json user
   app.post '/api/login/register', (req, res) ->
     obj = {

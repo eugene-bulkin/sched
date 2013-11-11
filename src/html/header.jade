@@ -1,7 +1,12 @@
-div(ng-controller='SchedHeaderCtrl')
-    #topbar
-        ul
-          li#login
-            | Log In or Sign Up
-      #logo
-        img(src='./images/logo.png')
+div
+  #topbar
+    ul(ng-if='!currentUser')
+      li.link(ng-click='openLogin()')
+        | Log In or Sign Up
+    ul(ng-if='currentUser')
+      li
+        | Hello, {{currentUser.username}}!
+      li.link(ng-click='logout()')
+        | Logout
+    #logo
+      img(src='./images/logo.png')
