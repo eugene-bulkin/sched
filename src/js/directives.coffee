@@ -78,8 +78,8 @@ loginModal = () ->
     templateUrl: templateDir + 'loginModal.html',
     link: (scope, element, attrs) ->
       $("#close-button").on 'click', () ->
-        $scope.showLogin = false
-        $scope.$apply()
+        scope.showLogin = false
+        scope.$apply()
         $(this).unbind "keyup"
       scope.toggleRegister = () ->
         scope.login = !scope.login
