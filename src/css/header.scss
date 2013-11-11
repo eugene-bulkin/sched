@@ -23,6 +23,11 @@
         font-size: 1.25em;
         font-weight: 700;
         color: #444;
+        display: inline;
+        &:not(:last-child)::after {
+          // bullet between list elements
+          content: " \2022 ";
+        }
         &.link {
           cursor: pointer;
         }
