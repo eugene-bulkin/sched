@@ -12,9 +12,20 @@ User = ($resource) ->
 
 Login = ($resource) ->
   $resource('/api/login/:mode', {}, {
+    logout: {
+      method: 'GET',
+      params: { mode: 'logout' },
+      response_type: 'json',
+      interceptor: {
+        response: (resp) ->
+          resp
+        responseError: (resp) ->
+          resp
+      }
+    }
     login: {
       method: 'POST',
-      params: {mode: 'login' },
+      params: { mode: 'login' },
       responseType: 'json',
       interceptor: {
         response: (resp) ->
