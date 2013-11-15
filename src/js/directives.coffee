@@ -61,6 +61,7 @@ schedHeader = (Login) ->
     link: (scope, element, attrs) ->
       scope.openLogin = () ->
         $(document).on "keyup", scope.closeModal
+        $('table#body').addClass('blur')
         scope.showLogin = true
       scope.logout = () ->
         Login.logout {}, (resp) ->
@@ -80,6 +81,7 @@ loginModal = () ->
       $("#close-button").on 'click', () ->
         scope.showLogin = false
         scope.$apply()
+        $('table#body').removeClass('blur')
         $(this).unbind "keyup"
       scope.toggleRegister = () ->
         scope.login = !scope.login

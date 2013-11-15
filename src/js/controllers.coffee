@@ -157,6 +157,7 @@ SchedHeaderCtrl = ($scope, User, Login) ->
     if e.keyCode is 27 #close on Esc key
       $scope.showLogin = false
       $scope.$apply()
+      $('table#body').removeClass('blur')
       $(this).unbind "keyup"
   $scope.processLogin = () ->
     form = @loginForm

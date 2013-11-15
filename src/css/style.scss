@@ -39,6 +39,12 @@ input {
   font-family: 'Open Sans', sans-serif;
 }
 
+$blur-radius: 2px;
+.blur {
+  -webkit-filter: blur($blur-radius);
+  filter: blur($blur-radius);
+}
+
 @import 'menu';
 @import 'display';
 @import 'header';
