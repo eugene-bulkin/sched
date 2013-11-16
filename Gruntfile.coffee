@@ -124,6 +124,18 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks('grunt-contrib-jade')
   grunt.loadNpmTasks('grunt-shell')
 
-  grunt.registerTask('compile', ['coffeelint', 'coffee','sass','jade', 'shell:codo'])
+  grunt.registerTask('compile', (args...) ->
+    tasks = []
+    # additional ones remove from compilation
+    if 'coffee' not in args
+      tasks = tasks.concat ['coffeelint', 'coffee']
+    if 'sass' not in args
+      tasks.push 'sass'
+    if 'jade' not in args
+      tasks.push 'jade'
+    if 'doc' not in args
+      tasks.push 'shell:codo'
+    grunt.task.run tasks
+  )
   grunt.registerTask('default', ['compile', 'concurrent:dev'])
   grunt.registerTask('production', ['compile', 'concurrent:production'])
