@@ -34,7 +34,7 @@ module.exports = (app, User) ->
         return
       req.session.loggedIn = true
       req.session.curUser = { username: user.username }
-      res.json user
+      res.json req.session.curUser
   app.post '/api/login/register', (req, res) ->
     obj = {
       username: req.body.username,
