@@ -144,7 +144,7 @@ The controller for the header element
 @param {Object} $scope
 @param {Object} User
 ###
-SchedHeaderCtrl = ($scope, User, Login) ->
+SchedHeaderCtrl = ($scope, Login) ->
   $scope.showLogin = false
   $scope.login = true
   $scope.errorMsg = null
@@ -162,10 +162,10 @@ SchedHeaderCtrl = ($scope, User, Login) ->
   $scope.processLogin = () ->
     form = @loginForm
     scope = this
-    Login.login {
+    Login.login({
       username: @username,
       password: @password
-    }, (response) ->
+    }).then (response) ->
         # if success, close the modal
         $scope.showLogin = false
         $(document).unbind "keyup"
@@ -175,7 +175,7 @@ SchedHeaderCtrl = ($scope, User, Login) ->
         form.$setPristine()
         # TODO: update header to reflect login
         $scope.currentUser = {
-          username: response.data.username
+          username: response.username
         }
     , (error) ->
       $scope.errorMsg = error.data
@@ -205,4 +205,4 @@ angular.module('sched.controllers', [])
   .controller('SchedMenuCtrl', SchedMenuCtrl, ['$scope'])
   .controller('SchedClassCtrl', SchedClassCtrl, ['$scope'])
   .controller('SchedDisplayCtrl', SchedDisplayCtrl, ['$scope'])
-  .controller('SchedHeaderCtrl', SchedHeaderCtrl, ['$scope', 'User', 'Login'])
+  .controller('SchedHeaderCtrl', SchedHeaderCtrl, ['$scope', 'Login'])

@@ -64,8 +64,8 @@ schedHeader = (Login) ->
         $('table#body').addClass('blur')
         scope.showLogin = true
       scope.logout = () ->
-        Login.logout {}, (resp) ->
-          if resp.data is "success"
+        Login.logout().then (resp) ->
+          if resp is "success"
             scope.currentUser = null
   }
 
@@ -85,17 +85,6 @@ loginModal = () ->
         $(this).unbind "keyup"
       scope.toggleRegister = () ->
         scope.login = !scope.login
-  }
-
-userExists = (User) ->
-  {
-    require:'ngModel',
-    restrict: 'A',
-    link: (scope, el, attrs, ctrl) ->
-      ctrl.$parsers.push((username) ->
-        # TODO: Implement user existence validator
-        username
-      )
   }
 
 ###
@@ -209,11 +198,11 @@ schedScheduleOptions = (Schedule, $location) ->
     link: (scope, element, attrs) ->
       element.find('.saveIcon').on 'click', () ->
         if $(@).hasClass('disabled') then return
-        Schedule.update {
-          id: scope.sched._id
-          }, scope.sched, (resp) ->
-            $location.path('/view/' + resp._id)
-            scope.modified = false
+        Schedule.update(scope.sched).then (resp) ->
+          $location.path('/view/' + resp._id)
+          scope.modified = false
+        , (error) ->
+          console.log error
       element.find('input').on 'change', () ->
         scope.modified = true
         scope.$apply()
@@ -254,7 +243,6 @@ angular.module('sched.directives', [])
   .directive('colorPicker', colorPicker)
   .directive('schedHeader', ['Login', schedHeader])
   .directive('loginModal', loginModal)
-  .directive('userExists', ['User', userExists])
   .directive('schedMenuTimeForm', schedMenuTimeForm)
   .directive('schedMenuForm', schedMenuForm)
   .directive('schedMenuLink', schedMenuLink)

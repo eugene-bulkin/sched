@@ -16,21 +16,19 @@ colorPickerPlace = () ->
 angular.module('sched',
   ['ngRoute', 'ngResource', 'ngAnimate', 'sched.directives', 'sched.controllers', 'sched.factories'],
   ($routeProvider) ->
-    classResolver = (Schedule, $q, $route) ->
+    schedResolver = (Schedule, $q, $route) ->
       deferred = $q.defer()
-      Schedule.query({ id: $route.current.params.schedId }, (data) ->
-        deferred.resolve(data[0])
+      Schedule.get($route.current.params.schedId).then (data) ->
+        deferred.resolve data
       , (reason) ->
         deferred.reject()
-      )
       deferred.promise
     loginResolver = (Login, $q, $route) ->
       deferred = $q.defer()
-      Login.currentUser({}, (data) ->
-        deferred.resolve(data.data)
+      Login.currentUser().then (data) ->
+        deferred.resolve data
       , (reason) ->
         deferred.reject()
-      )
       deferred.promise
     $routeProvider.when('/', {
       template: '<sched-schedule-options></sched-schedule-options><sched-display></sched-display><sched-menu></sched-menu><color-picker></color-picker>',
@@ -44,7 +42,7 @@ angular.module('sched',
       template: '<sched-schedule-options></sched-schedule-options><sched-display></sched-display><sched-menu></sched-menu><color-picker></color-picker>',
       controller: SchedCtrl,
       resolve: {
-        sched: classResolver,
+        sched: schedResolver,
         currentUser: loginResolver
       }
     })
