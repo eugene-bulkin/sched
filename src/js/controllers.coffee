@@ -153,12 +153,14 @@ SchedHeaderCtrl = ($scope, Login) ->
   $scope.$on 'user-loaded', (e, user) ->
     # for some rason, angular returns "null" if null is sent...
     $scope.currentUser = if user is "null" then null else user
+  $scope.removeModal = () ->
+    $scope.showLogin = false
+    $('table#body').removeClass('blur')
+    $(this).unbind "keyup"
   $scope.closeModal = (e) ->
     if e.keyCode is 27 #close on Esc key
-      $scope.showLogin = false
+      $scope.removeModal()
       $scope.$apply()
-      $('table#body').removeClass('blur')
-      $(this).unbind "keyup"
   $scope.processLogin = () ->
     form = @loginForm
     scope = this
@@ -167,8 +169,7 @@ SchedHeaderCtrl = ($scope, Login) ->
       password: @password
     }).then (response) ->
         # if success, close the modal
-        $scope.showLogin = false
-        $(document).unbind "keyup"
+        $scope.removeModal()
         # TODO: reset form
         scope.username = ''
         scope.password = ''
