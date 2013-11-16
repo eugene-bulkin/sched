@@ -52,7 +52,7 @@ colorPicker = () ->
 ###
 A directive for the header section of the page.
 ###
-schedHeader = (Login) ->
+schedHeader = (Login, $location) ->
   {
     restrict: 'E',
     replace: false,
@@ -67,6 +67,8 @@ schedHeader = (Login) ->
         Login.logout().then (resp) ->
           if resp is "success"
             scope.currentUser = null
+      scope.goToIndex = () ->
+        $location.path('/')
   }
 
 ###
@@ -239,7 +241,7 @@ angular.module('sched.directives', [])
   .directive('timePicker', timePicker)
   .directive('colorPickerButton', colorPickerButton)
   .directive('colorPicker', colorPicker)
-  .directive('schedHeader', ['Login', schedHeader])
+  .directive('schedHeader', ['Login', '$location', schedHeader])
   .directive('loginModal', loginModal)
   .directive('schedMenuTimeForm', schedMenuTimeForm)
   .directive('schedMenuForm', schedMenuForm)
