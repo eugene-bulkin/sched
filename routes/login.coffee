@@ -33,7 +33,7 @@ module.exports = (app, User) ->
         res.send "incorrect_password"
         return
       req.session.loggedIn = true
-      req.session.curUser = { username: user.username }
+      req.session.curUser = user
       res.json req.session.curUser
   app.post '/api/login/register', (req, res) ->
     obj = {
@@ -46,5 +46,5 @@ module.exports = (app, User) ->
         res.send err
         return
       req.session.loggedIn = true
-      req.session.curUser = { username: user.username }
+      req.session.curUser = user
       res.json req.session.curUser
