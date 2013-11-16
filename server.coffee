@@ -22,7 +22,7 @@ scheduleSchema = Schema {
 }
 
 userSchema = Schema {
-  username: String,
+  username: { type: String, index: {unique: true, dropDups: true} },
   hash: String
 }
 # Models

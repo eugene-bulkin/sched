@@ -42,5 +42,9 @@ module.exports = (app, User) ->
     }
     User.create obj, (err, user) ->
       if err
+        res.status 400
         res.send err
-      res.json user
+        return
+      req.session.loggedIn = true
+      req.session.curUser = { username: user.username }
+      res.json req.session.curUser

@@ -17,6 +17,9 @@ Login = ($http) ->
     login: (data) ->
       $http({ method: 'POST', url: '/api/login/login', data: data }).then (data) ->
         data.data
+    register: (data) ->
+      $http({ method: 'POST', url: '/api/login/register', data: data }).then (data) ->
+        data.data
     currentUser: () ->
       $http({ method: 'GET', url: '/api/login' }).then (data) ->
         data.data

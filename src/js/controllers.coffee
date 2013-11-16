@@ -183,23 +183,26 @@ SchedHeaderCtrl = ($scope, Login) ->
   $scope.processRegister = () ->
     form = @registerForm
     scope = this
-    Login.register {
+    Login.register({
       username: @username,
       password: @password
-    }
-    ###, (response) ->
-      if response.data is "register_success"
+    }).then (response) ->
         # if success, close the modal
-        $scope.showLogin = false
-        $(document).unbind "keyup"
+        $scope.removeModal()
         # TODO: reset form
         scope.username = ''
         scope.password = ''
         form.$setPristine()
         # TODO: update header to reflect login
+        $scope.currentUser = {
+          username: response.username
+        }
     , (error) ->
-      $scope.errorMsg = error.data
-    )###
+      if error.data.code is 11000
+        # this is a duplicate user
+        $scope.errorMsg = "The username '#{scope.username}' is already taken. Please choose another one."
+      else
+        $scope.errorMsg = error.data
 
 angular.module('sched.controllers', [])
   .controller('SchedCtrl', SchedCtrl, ['$scope'])
