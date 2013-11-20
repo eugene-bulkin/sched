@@ -16,8 +16,30 @@ app.configure () ->
 
 
 scheduleSchema = Schema {
-  name: String,
-  classes: Array,
+  name: { type: String, index: true },
+  lastModified: { type: Date, default: Date.now },
+  classes: [
+    {
+      name: String,
+      section: String,
+      color: String,
+      times: [
+        {
+          days: {
+            1: Boolean,
+            2: Boolean,
+            3: Boolean,
+            4: Boolean,
+            5: Boolean
+          },
+          start: String,
+          end: String,
+          location: String,
+          instructor: String
+        }
+      ]
+    }
+  ],
   user: { type: Schema.Types.ObjectId, ref: 'User' }
 }
 

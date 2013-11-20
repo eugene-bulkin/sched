@@ -1,11 +1,12 @@
 module.exports = (app, Schedule) ->
   app.get '/api/sched/:schedId', (req, res) ->
-    Schedule.find {
-      _id: req.params.schedId
-    }, (err, sched) ->
-      if err
-        res.send err
-      res.json sched
+    Schedule.find({ _id: req.params.schedId })
+      .limit(1)
+      .exec (err, sched) ->
+        if err
+          res.status 400
+          res.send err
+        res.json sched
   app.put '/api/sched', (req, res) ->
     obj = {
       name: req.body.name,
@@ -32,7 +33,7 @@ module.exports = (app, Schedule) ->
     }
     Schedule.update {
       _id: req.params.schedId
-    }, obj, (err, num) ->
+    }, { $set: obj }, (err, num) ->
       if err
         res.send err
       res.json req.body
