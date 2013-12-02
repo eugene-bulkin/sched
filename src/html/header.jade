@@ -1,12 +1,15 @@
 div
   #topbar
-    ul(ng-if='!currentUser')
+    ul.left
+      li.link(ng-click='goTo("/")') Home
+      li.link(ng-click='goTo("/schedule/")') Create Schedule
+    ul.right(ng-if='!currentUser')
       li.link(ng-click='openLogin()')
         | Log In or Sign Up
-    ul(ng-if='currentUser')
+    ul.right(ng-if='currentUser')
       li
         | Hello, {{currentUser.username}}!
       li.link(ng-click='logout()')
         | Logout
     #logo
-      img(src='./images/logo.png', ng-click="goToIndex()")
+      img(src='./images/logo.png', ng-click='goTo("/")')

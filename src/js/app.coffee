@@ -13,6 +13,8 @@ colorPickerPlace = () ->
     true
   false
 
+templateDir = 'build/partials/'
+
 angular.module('sched',
   ['ngRoute', 'ngResource', 'ngAnimate', 'sched.directives', 'sched.controllers', 'sched.factories'],
   ($routeProvider) ->
@@ -31,6 +33,10 @@ angular.module('sched',
         deferred.reject()
       deferred.promise
     $routeProvider.when('/', {
+      templateUrl: templateDir + 'home.html',
+      controller: HomeCtrl
+    })
+    $routeProvider.when('/schedule/', {
       template: '<sched-schedule-options></sched-schedule-options><sched-display></sched-display><sched-menu></sched-menu><color-picker></color-picker>',
       controller: SchedCtrl,
       resolve: {
@@ -38,7 +44,7 @@ angular.module('sched',
         currentUser: loginResolver
       }
     })
-    $routeProvider.when('/view/:schedId', {
+    $routeProvider.when('/schedule/:schedId', {
       template: '<sched-schedule-options></sched-schedule-options><sched-display></sched-display><sched-menu></sched-menu><color-picker></color-picker>',
       controller: SchedCtrl,
       resolve: {

@@ -69,8 +69,8 @@ schedHeader = (Login, $location) ->
         Login.logout().then (resp) ->
           if resp is "success"
             scope.currentUser = null
-      scope.goToIndex = () ->
-        $location.path('/')
+      scope.goTo = (route) ->
+        $location.path(route)
   }
 
 ###

@@ -15,6 +15,9 @@ chunk = (arr, chunkSize) ->
     R.push(arr.slice(i,i+chunkSize))
   R
 
+HomeCtrl = ($scope, $location) ->
+  $scope.create = () ->
+    $location.path('/schedule/')
 ###
 The schedule app controller. Keeps track of classes.
 
@@ -208,6 +211,7 @@ SchedHeaderCtrl = ($scope, Login) ->
         $scope.errorMsg = error.data
 
 angular.module('sched.controllers', [])
+  .controller('HomeCtrl', HomeCtrl, ['$scope', '$location'])
   .controller('SchedCtrl', SchedCtrl, ['$scope'])
   .controller('SchedMenuCtrl', SchedMenuCtrl, ['$scope'])
   .controller('SchedClassCtrl', SchedClassCtrl, ['$scope'])
