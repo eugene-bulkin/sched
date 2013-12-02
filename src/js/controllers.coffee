@@ -154,6 +154,7 @@ SchedHeaderCtrl = ($scope, Login) ->
     # for some rason, angular returns "null" if null is sent...
     $scope.currentUser = if user is "null" then null else user
   $scope.removeModal = () ->
+    $scope.login = true
     $scope.showLogin = false
     $('table#body').removeClass('blur')
     $(this).unbind "keyup"

@@ -63,6 +63,7 @@ schedHeader = (Login, $location) ->
         $(document).on "keyup", scope.closeModal
         $('table#body').addClass('blur')
         scope.showLogin = true
+        scope.login = true
       scope.logout = () ->
         Login.logout().then (resp) ->
           if resp is "success"
