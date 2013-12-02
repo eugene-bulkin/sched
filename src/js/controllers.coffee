@@ -153,6 +153,8 @@ SchedHeaderCtrl = ($scope, Login) ->
   $scope.$on 'user-loaded', (e, user) ->
     # for some rason, angular returns "null" if null is sent...
     $scope.currentUser = if user is "null" then null else user
+  $scope.focus = (mode) ->
+    setTimeout (() -> $("##{mode}-view input.login-username")[0].focus()), 100
   $scope.removeModal = () ->
     $scope.login = true
     $scope.showLogin = false

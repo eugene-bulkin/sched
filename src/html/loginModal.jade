@@ -9,7 +9,7 @@
             form(ng-submit='processLogin()', name='loginForm')
               label
                 | Username:
-                input(ng-model='username', type='text')
+                input.login-username(ng-model='username', type='text')
               label
                 | Password:
                 input(ng-model='password', type='password')
@@ -25,7 +25,7 @@
             form(ng-submit='processRegister()', name='registerForm')
               label
                 | Username:
-                input(ng-model='username', type='text', ng-pattern='/^[a-zA-Z0-9_]+$/', required='required', user-exists='user-exists')
+                input.login-username(ng-model='username', type='text', ng-pattern='/^[a-zA-Z0-9_]+$/', required='required', user-exists='user-exists')
               label
                 | Password:
                 input(ng-model='password', type='password', required='required', ng-minlength='4')

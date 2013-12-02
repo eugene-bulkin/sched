@@ -62,6 +62,7 @@ schedHeader = (Login, $location) ->
       scope.openLogin = () ->
         $(document).on "keyup", scope.closeModal
         $('table#body').addClass('blur')
+        scope.focus 'login'
         scope.showLogin = true
         scope.login = true
       scope.logout = () ->
@@ -86,6 +87,7 @@ loginModal = () ->
         scope.$apply()
       scope.toggleRegister = () ->
         scope.login = !scope.login
+        scope.focus 'register'
   }
 
 ###
