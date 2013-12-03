@@ -6,7 +6,7 @@ div#user
         th Schedule Name
         th Last Modified
     tbody
-      tr(ng-repeat='schedule in schedules')
+      tr(ng-repeat='schedule in schedules | orderBy:"-lastModified"')
         th
           a(ng-click='goTo("/schedule/{{schedule._id}}")') {{schedule.name}}
         td {{schedule.lastModified | date:'medium'}}
