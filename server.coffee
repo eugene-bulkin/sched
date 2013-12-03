@@ -53,7 +53,7 @@ User = mongoose.model 'User', userSchema
 
 require('./routes/main')(app)
 require('./routes/sched')(app, Schedule)
-require('./routes/user')(app, User)
+require('./routes/user')(app, User, Schedule)
 require('./routes/login')(app, User)
 
 port = process.env.PORT || 3000

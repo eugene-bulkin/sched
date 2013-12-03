@@ -28,6 +28,17 @@ Login = ($http) ->
         data.data
   }
 
+User = ($http) ->
+  {
+    schedules: (id) ->
+      $http({ method: 'GET', url: '/api/user/' + id + '/schedules'}).then (data) ->
+        data.data
+    get: (id) ->
+      $http({ method: 'GET', url: '/api/user/' + id }).then (data) ->
+        data.data
+  }
+
 angular.module('sched.factories', [])
   .factory('Schedule', Schedule)
   .factory('Login', Login)
+  .factory('User', User)

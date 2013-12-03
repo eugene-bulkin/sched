@@ -32,6 +32,16 @@ angular.module('sched',
       , (reason) ->
         deferred.reject()
       deferred.promise
+    userResolver = (User, $q, $route) ->
+      deferred = $q.defer()
+      $q.all({
+        user: User.get($route.current.params.userId),
+        schedules: User.schedules($route.current.params.userId)
+      }).then (data) ->
+        deferred.resolve data
+      , (reason) ->
+        deferred.reject()
+      deferred.promise
     $routeProvider.when('/', {
       templateUrl: templateDir + 'home.html',
       controller: HomeCtrl
@@ -50,6 +60,13 @@ angular.module('sched',
       resolve: {
         sched: schedResolver,
         currentUser: loginResolver
+      }
+    })
+    $routeProvider.when('/user/:userId', {
+      templateUrl: templateDir + 'user.html',
+      controller: UserCtrl,
+      resolve: {
+        resolveData: userResolver
       }
     })
     $routeProvider.otherwise({
