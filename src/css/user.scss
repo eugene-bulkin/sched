@@ -1,0 +1,31 @@
+#user {
+  h1 {
+    text-align:  center;
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #0043a6;
+    margin: 0.25em;
+    margin-bottom: 0.5em;
+  }
+  table {
+    width: 60%;
+    margin: 0 auto;
+    font-size: 1.25em;
+  }
+  th {
+    font-weight: bold;
+    padding: 2px;
+  }
+  thead th {
+    border-bottom: 1px solid #000;
+  }
+  tbody {
+    td {
+      padding: 2px;
+    }
+    th a {
+      color: #ff3100;
+      cursor: pointer;
+    }
+  }
+}

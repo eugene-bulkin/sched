@@ -15,13 +15,18 @@ chunk = (arr, chunkSize) ->
     R.push(arr.slice(i,i+chunkSize))
   R
 
+goTo = ($location) ->
+  (route) ->
+    $location.path(route)
+
 HomeCtrl = ($scope, $location) ->
   $scope.create = () ->
     $location.path('/schedule/')
 
-UserCtrl = ($scope, resolveData) ->
+UserCtrl = ($scope, $location, resolveData) ->
   $scope.user = resolveData.user
   $scope.schedules = resolveData.schedules
+  $scope.goTo = goTo $location
 ###
 The schedule app controller. Keeps track of classes.
 
@@ -151,7 +156,7 @@ The controller for the header element
 @param {Object} $scope
 @param {Object} User
 ###
-SchedHeaderCtrl = ($scope, Login) ->
+SchedHeaderCtrl = ($scope, $location, Login) ->
   $scope.showLogin = false
   $scope.login = true
   $scope.errorMsg = null
@@ -160,6 +165,7 @@ SchedHeaderCtrl = ($scope, Login) ->
   $scope.$on 'user-loaded', (e, user) ->
     # for some reason, angular returns "null" if null is sent...
     $scope.currentUser = if user is "null" then null else user
+  $scope.goTo = goTo $location
   $scope.focus = (mode) ->
     setTimeout (() -> $("##{mode}-view input.login-username")[0].focus()), 100
   $scope.removeModal = () ->
@@ -216,9 +222,9 @@ SchedHeaderCtrl = ($scope, Login) ->
 
 angular.module('sched.controllers', [])
   .controller('HomeCtrl', HomeCtrl, ['$scope', '$location'])
-  .controller('UserCtrl', UserCtrl, ['$scope'])
+  .controller('UserCtrl', UserCtrl, ['$scope', '$location'])
   .controller('SchedCtrl', SchedCtrl, ['$scope'])
   .controller('SchedMenuCtrl', SchedMenuCtrl, ['$scope'])
   .controller('SchedClassCtrl', SchedClassCtrl, ['$scope'])
   .controller('SchedDisplayCtrl', SchedDisplayCtrl, ['$scope'])
-  .controller('SchedHeaderCtrl', SchedHeaderCtrl, ['$scope', 'Login'])
+  .controller('SchedHeaderCtrl', SchedHeaderCtrl, ['$scope', '$location', 'Login'])

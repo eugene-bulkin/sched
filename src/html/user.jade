@@ -1,5 +1,12 @@
 div#user
   h1 {{user.username}}
   table
-    tr(ng-repeat='schedule in schedules')
-      td {{schedule.name}}
+    thead
+      tr
+        th Schedule Name
+        th Last Modified
+    tbody
+      tr(ng-repeat='schedule in schedules')
+        th
+          a(ng-click='goTo("/schedule/{{schedule._id}}")') {{schedule.name}}
+        td {{schedule.lastModified | date:'medium'}}
