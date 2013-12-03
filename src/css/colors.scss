@@ -1,4 +1,8 @@
-// Slightly modified version of http://colorschemedesigner.com/#3F327--------
+/*
+ * Slightly modified version of http://colorschemedesigner.com/#3F327--------
+ * We use a triad color scheme: primary color is a type of blue,
+ * with a 45 degree angle between the two complementary colors.
+ */
 $c-primary: hsl(216, 100%, 50%);
 $c-triad1: hsl(10, 100%, 50%);
 $c-triad2: hsl(55, 100%, 50%);
