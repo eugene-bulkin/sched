@@ -239,6 +239,27 @@ timePicker = () ->
         $(element).change()
   }
 
+loadingModal = () ->
+  {
+    restrict: 'E',
+    replace: true,
+    templateUrl: templateDir + 'loadingModal.html',
+    link: (scope, element, attrs) ->
+      scope.loadingTimeout = null
+      scope.$on '$routeChangeStart', (args...) ->
+        # wait half a second in case the server is just being a bit slow
+        scope.loadingTimeout = setTimeout ->
+          scope.showLoading = true
+          scope.$apply()
+        , 500
+      scope.$on '$routeChangeSuccess', (args...) ->
+        scope.showLoading = false
+        clearTimeout scope.loadingTimeout
+      scope.$on '$routeChangeError', (args...) ->
+        scope.showLoading = false
+        clearTimeout scope.loadingTimeout
+  }
+
 angular.module('sched.directives', [])
   .directive('repeated', repeated)
   .directive('timePicker', timePicker)
@@ -246,6 +267,7 @@ angular.module('sched.directives', [])
   .directive('colorPicker', colorPicker)
   .directive('schedHeader', ['Login', '$location', schedHeader])
   .directive('loginModal', loginModal)
+  .directive('loadingModal', loadingModal)
   .directive('schedMenuTimeForm', schedMenuTimeForm)
   .directive('schedMenuForm', schedMenuForm)
   .directive('schedMenuLink', schedMenuLink)

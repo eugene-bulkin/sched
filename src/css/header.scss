@@ -73,12 +73,10 @@
     right: 0;
     overflow: hidden;
     margin: auto;
-    width: 60%;
-    height: 450px;
     background: #fdfdfd;
     z-index: 1001;
     border-radius: 40px;
-
+    padding: 40px;
     #close-button {
       position: absolute;
       top: 20px;
@@ -109,11 +107,35 @@
   }
 }
 
+.modal-content {
+  &.login {
+    width: 60%;
+    height: 450px;
+  }
+  &.loading {
+    width: 30rem;
+    height: 12rem;
+    #loading {
+      position: absolute;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      font-size: 3rem;
+      height: 3rem;
+      display: inline-block;
+      text-align: center;
+      font-weight: bold;
+    }
+  }
+}
+
 .modal-content .login-screen {
   position: absolute;
-  padding: 40px;
   width: 100%;
   height: 100%;
+  padding: 40px;
   .left, .right {
     width: 50%;
     height: 100%;
