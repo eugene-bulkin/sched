@@ -40,11 +40,12 @@ scheduleSchema = Schema {
       ]
     }
   ],
-  user: { type: Schema.Types.ObjectId, ref: 'User' }
+  user: { type: String, ref: 'User' }
 }
 
+# username must unique anyway, so use it as _id
 userSchema = Schema {
-  username: { type: String, index: {unique: true, dropDups: true} },
+  _id: String,
   hash: String
 }
 # Models

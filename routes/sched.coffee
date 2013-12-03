@@ -11,7 +11,7 @@ module.exports = (app, Schedule) ->
     obj = {
       name: req.body.name,
       classes: req.body.classes,
-      user: req.session.curUser?._id || null
+      user: req.session.curUser?.username || null
     }
     Schedule.create obj, (err, sched) ->
       if err
@@ -22,7 +22,7 @@ module.exports = (app, Schedule) ->
       res.status 400
       res.send "anon"
       return
-    if req.body.user isnt req.session.curUser?._id
+    if req.body.user isnt req.session.curUser?.username
       res.status 400
       res.send "no_perm"
       return

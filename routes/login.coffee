@@ -18,7 +18,7 @@ module.exports = (app, User) ->
       res.json req.session.curUser
       return
     User.findOne {
-      username: req.body.username
+      _id: req.body.username
     }, (err, user) ->
       if user is null
         res.status 400
@@ -33,11 +33,11 @@ module.exports = (app, User) ->
         res.send "incorrect_password"
         return
       req.session.loggedIn = true
-      req.session.curUser = { _id: user._id, username: user.username }
+      req.session.curUser = { username: user._id }
       res.json req.session.curUser
   app.post '/api/login/register', (req, res) ->
     obj = {
-      username: req.body.username,
+      _id: req.body.username,
       hash: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
     }
     User.create obj, (err, user) ->
@@ -46,5 +46,5 @@ module.exports = (app, User) ->
         res.send err
         return
       req.session.loggedIn = true
-      req.session.curUser = { _id: user._id, username: user.username }
+      req.session.curUser = { username: user._id }
       res.json req.session.curUser
