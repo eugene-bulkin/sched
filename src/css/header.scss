@@ -36,6 +36,15 @@
         &.link {
           cursor: pointer;
         }
+        a.userlink {
+          cursor: pointer;
+          &::before {
+            content: 'Hello, ';
+          }
+          &::after {
+            content: '!';
+          }
+        }
       }
     }
   }
