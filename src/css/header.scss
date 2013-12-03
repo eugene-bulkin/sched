@@ -85,7 +85,6 @@
     background: #fdfdfd;
     z-index: 1001;
     border-radius: 40px;
-    padding: 40px;
     #close-button {
       position: absolute;
       top: 20px;
@@ -124,6 +123,7 @@
   &.loading {
     width: 30rem;
     height: 12rem;
+    padding: 40px;
     #loading {
       position: absolute;
       margin: auto;
