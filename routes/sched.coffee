@@ -29,6 +29,7 @@ module.exports = (app, Schedule) ->
     obj = {
       name: req.body.name,
       classes: req.body.classes,
+      lastModified: Date.now(),
       user: req.body.user
     }
     Schedule.update {
