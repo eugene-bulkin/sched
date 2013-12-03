@@ -44,7 +44,10 @@ angular.module('sched',
       deferred.promise
     $routeProvider.when('/', {
       templateUrl: templateDir + 'home.html',
-      controller: HomeCtrl
+      controller: HomeCtrl,
+      resolve: {
+        currentUser: loginResolver
+      }
     })
     $routeProvider.when('/schedule/', {
       template: '<sched-schedule-options></sched-schedule-options><sched-display></sched-display><sched-menu></sched-menu><color-picker></color-picker>',

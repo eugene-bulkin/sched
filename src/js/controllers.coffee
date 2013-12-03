@@ -19,9 +19,10 @@ goTo = ($location) ->
   (route) ->
     $location.path(route)
 
-HomeCtrl = ($scope, $location) ->
+HomeCtrl = ($scope, $location, currentUser) ->
   $scope.create = () ->
     $location.path('/schedule/')
+  $scope.$emit('user-loaded', currentUser)
 
 UserCtrl = ($scope, $location, resolveData) ->
   $scope.user = resolveData.user
