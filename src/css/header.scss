@@ -163,12 +163,12 @@
       background: none;
       border: none;
       outline: none;
-      color: #ff3100;
+      color: $c-triad1;
       cursor: pointer;
       font-weight: bold;
       padding: 1px 0;
       &:hover {
-        border-bottom: 1px dotted change-color(#ff3100, $alpha: 0.75);
+        border-bottom: 1px dotted change-color($c-triad1, $alpha: 0.75);
       }
     }
   }

@@ -3,7 +3,7 @@
     text-align:  center;
     font-size: 2.5em;
     font-weight: bold;
-    color: #0043a6;
+    color: $c-p-darkest;
     margin: 0.25em;
     margin-bottom: 0.5em;
   }
@@ -24,7 +24,7 @@
       padding: 2px;
     }
     th a {
-      color: #ff3100;
+      color: $c-triad1;
       cursor: pointer;
     }
   }

@@ -40,7 +40,7 @@ $time-height: 25px;
       height: ($display-height - $time-height) / 5;
       display: block;
       position: relative;
-      background: #0043a6;
+      background: $c-p-darker;
       span {
         position: absolute;
         top: 0;
@@ -116,7 +116,6 @@ $time-height: 25px;
   }
 }
 
-$primary: #0066ff;
 #schedOptions {
   input[type='text'] {
     display: block;
@@ -147,12 +146,12 @@ $primary: #0066ff;
     @include missing-corners(1.5em, top-left, bottom-left);
     svg {
       width: 100%;
-      @include svg-twocolor(#fff, $primary);
+      @include svg-twocolor(#fff, $c-primary);
     }
     &:not(.disabled):hover {
-      background-color: $primary;
+      background-color: $c-primary;
       svg {
-        @include svg-twocolor($primary, #fff);
+        @include svg-twocolor($c-primary, #fff);
       }
     }
     &.disabled {

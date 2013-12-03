@@ -1,0 +1,17 @@
+// Slightly modified version of http://colorschemedesigner.com/#3F327--------
+$c-primary: hsl(216, 100%, 50%);
+$c-triad1: hsl(10, 100%, 50%);
+$c-triad2: hsl(55, 100%, 50%);
+
+$c-p-lightest: change-color($c-primary, $lightness: 95%);
+$c-p-lighter: change-color($c-primary, $lightness: 75%);
+$c-p-darker: change-color($c-primary, $saturation: 33%, $lightness: 37.5%);
+$c-p-darkest: change-color($c-primary, $lightness: 15%);
+$c-1-lightest: change-color($c-triad1, $lightness: 95%);
+$c-1-lighter: change-color($c-triad1, $lightness: 75%);
+$c-1-darker: change-color($c-triad1, $saturation: 33%, $lightness: 37.5%);
+$c-1-darkest: change-color($c-triad1, $lightness: 15%);
+$c-2-lightest: change-color($c-triad2, $lightness: 95%);
+$c-2-lighter: change-color($c-triad2, $lightness: 75%);
+$c-2-darker: change-color($c-triad2, $saturation: 33%, $lightness: 37.5%);
+$c-2-darkest: change-color($c-triad2, $lightness: 15%);
