@@ -14,18 +14,20 @@
   }
   th {
     font-weight: bold;
-    padding: 2px;
+  }
+  th, td {
+    padding: 0.5em;
   }
   thead th {
     border-bottom: 1px solid #000;
   }
   tbody {
-    td {
-      padding: 2px;
-    }
     th a {
       color: $c-triad1;
       cursor: pointer;
+      &:hover {
+        border-bottom: 1px dotted;
+      }
     }
   }
 }
