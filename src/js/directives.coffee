@@ -202,7 +202,7 @@ schedScheduleOptions = (Schedule, $location) ->
       element.find('.saveIcon').on 'click', () ->
         if $(@).hasClass('disabled') then return
         Schedule.update(scope.sched).then (resp) ->
-          $location.path('/view/' + resp._id)
+          $location.path('/schedule/' + resp._id)
           scope.modified = false
         , (error) ->
           console.log error
