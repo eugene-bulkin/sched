@@ -2,10 +2,21 @@
  * Slightly modified version of http://colorschemedesigner.com/#3F327--------
  * We use a triad color scheme: primary color is a type of blue,
  * with a 45 degree angle between the two complementary colors.
+ *
+ * The reflection across 225 is something to do with the color scheme designer's
+ * unusual calculation of hue.
  */
-$c-primary: hsl(216, 100%, 50%);
-$c-triad1: hsl(10, 100%, 50%);
-$c-triad2: hsl(55, 100%, 50%);
+
+$hue: 215;
+$angle: 45;
+
+//
+// Don't modify past here!
+//
+$c-hue: 2 * 225 - $hue;
+$c-primary: hsl($hue, 100%, 50%);
+$c-triad1: hsl(($c-hue + 180) % 360 - $angle, 100%, 50%);
+$c-triad2: hsl(($c-hue + 180) % 360, 100%, 50%);
 
 $c-p-lightest: change-color($c-primary, $lightness: 95%);
 $c-p-lighter: change-color($c-primary, $lightness: 75%);
