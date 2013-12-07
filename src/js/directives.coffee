@@ -100,6 +100,9 @@ schedMenuForm = () ->
       closeCallback = () ->
         $(element).toggleClass("open selected")
         if $("#colors") then $("#colors").hide()
+      $(element).find('button.clsEnable').on 'click', () ->
+        scope.class.enabled = !scope.class.enabled
+        scope.$apply()
       $(element).find('button.clsDelete').on 'click', () ->
         closeCallback()
         $("li#cls-" + scope.$index).hide()

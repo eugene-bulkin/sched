@@ -6,15 +6,17 @@
       .generalInfo
         table
           tr
-            td(colspan=3)
+            td(colspan=4)
               input(type='text', name='clsName', ng-model='class.name', placeholder='Class name')
             td(colspan=2)
-              button.clsDelete Delete
+              input(type='text', name='clsSect', ng-model='class.section', placeholder='Section')
           tr
             td(colspan=2)
               color-picker-button(ng-model='class.color')
-            td(colspan=3)
-              input(type='text', name='clsSect', ng-model='class.section', placeholder='Section')
+            td(colspan=2)
+              button.clsButton.clsEnable {{class.enabled ? 'Disable' : 'Enable'}}
+            td(colspan=2)
+              button.clsButton.clsDelete Delete
       .times-nav
         table
           tr

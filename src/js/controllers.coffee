@@ -64,6 +64,7 @@ SchedMenuCtrl = ($scope) ->
        name: "",
        section: null,
        color: "#888",
+       enabled: true,
        times: []
     }
     $scope.classes.push(obj)
@@ -76,8 +77,8 @@ The schedule class controller.
 @param [Object] $scope
 ###
 SchedClassCtrl = ($scope) ->
-  $scope.hasTimes = (cls) ->
-    $scope.timeDiff(cls.start, cls.end) > 0
+  $scope.isShown = (cls) ->
+    $scope.timeDiff(cls.start, cls.end) > 0 and cls.enabled
   $scope.clickClass = (cls) ->
     $scope.$emit('class-click', cls.tId)
     if !$('#menu').hasClass('open')
@@ -132,6 +133,7 @@ SchedDisplayCtrl = ($scope) ->
           clsInfo = {
             name: cls.name,
             section: cls.section,
+            enabled: cls.enabled,
             start: time.start,
             end: time.end,
             location: time.location,

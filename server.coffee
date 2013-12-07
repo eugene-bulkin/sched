@@ -23,6 +23,7 @@ scheduleSchema = Schema {
       name: String,
       section: String,
       color: String,
+      enabled: Boolean,
       times: [
         {
           days: {

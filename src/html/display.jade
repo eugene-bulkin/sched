@@ -20,7 +20,7 @@
               td(colspan='2', ng-repeat='i in range(8,23)')
                 span {{i}}:00
         #classes.display-view
-          .clsBox(ng-repeat='cls in classList', ng-style='getStyle(cls)', ng-click='clickClass(cls)', ng-controller='SchedClassCtrl', ng-show='hasTimes(cls)')
+          .clsBox(ng-repeat='cls in classList', ng-style='getStyle(cls)', ng-click='clickClass(cls)', ng-controller='SchedClassCtrl', ng-show='isShown(cls)')
             span
               b {{cls.name}}
               br

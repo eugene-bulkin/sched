@@ -195,19 +195,27 @@ $menu-t-type: ease-in-out;
       width: 20%;
       padding: 0 2px;
     }
-    button.clsDelete {
+    button.clsButton {
       width: 100%;
       font-size: 1em;
       border-radius: 8px;
-      border: 1px solid #800;
-      background: #d44;
+      border: 1px solid;
       font-weight: bold;
-      color: #f8f8f8;
       padding: 5px;
       outline: none;
       &:hover {
         cursor: pointer;
         opacity: 0.9;
+      }
+      &.clsDelete {
+        background: #d44;
+        color: #f8f8f8;
+        border-color: #800;
+      }
+      &.clsEnable {
+        background: #444;
+        color: #f8f8f8;
+        border-color: #000;
       }
     }
     button[name='clsColor'] {
