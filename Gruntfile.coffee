@@ -57,8 +57,14 @@ module.exports = (grunt) ->
       routes: ['routes/*.coffee']
     },
     shell: {
+      # There does not as yet exist a good grunt-codo plugin
       codo: {
         command: 'codo -n "sched" --title "sched documentation" --cautious src/js/'
+      },
+      # For some reason, JS files are generated in the source folder despite them
+      # supposedly being removed at some point, so we remove them manually
+      removeJS: {
+        command: 'rm src/js/*.js'
       }
     },
     # compilation
@@ -128,7 +134,7 @@ module.exports = (grunt) ->
     tasks = []
     # additional ones remove from compilation
     if 'coffee' not in args
-      tasks = tasks.concat ['coffeelint', 'coffee']
+      tasks = tasks.concat ['coffeelint', 'coffee', 'shell:removeJS']
     if 'sass' not in args
       tasks.push 'sass'
     if 'jade' not in args
