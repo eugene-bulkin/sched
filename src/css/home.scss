@@ -1,15 +1,25 @@
-$accent: #ff3100;
-
 #home {
-  width: 90%;
+  width: 70%;
   margin: 0 auto;
   * {
     font-family: 'Open Sans', sans-serif;
   }
-  font-size: 1.5rem;
+  p {
+    font-size: 1.85rem;
+    line-height: 3rem;
+    margin: 1rem;
+    color: #484848;
+    a {
+      color: $c-triad1;
+      text-decoration: none;
+      &:hover {
+        border-bottom: 1px dotted;
+      }
+    }
+  }
   button {
     display: block;
-    @include flat-button-colors($accent);
+    @include flat-button-colors($c-triad1);
     padding: 1.25em 2em;
     font-size: 2rem;
     text-transform: uppercase;

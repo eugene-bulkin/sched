@@ -1,4 +1,10 @@
 div#home
-  | Intro goes here!
+  p Welcome to sched! This is an app that allows you to format class schedules conveniently and display them in a clean, visually appealing manner.
+  p To create a schedule, click the link in the navbar at the top of the page or the button at the bottom of this page. The interface emphasizes the schedule itself; it is, after all, the most important thing here. To add or modify classes, click the tab on the right side of the screen to open up the menu. In editing a class, you may add new time slots to the class by pressing the + button and using the dropdown menus to enter the times (or simply use 24-hour time and type it in). To save your schedule, click the save icon above the schedule display on the left side of the screen.
+  p If you wish to create a schedule anonymously, feel free to do so! Please note that anonymous schedules cannot (currently) be edited after saving; that is, if you create a schedule anonymously, you cannot modify it once it has been saved, so make sure you're sure you're done before you save, and copy the URL somewhere! If you wish to modify schedules after the fact, simply create an account.
+  p
+    | Have fun! If you have questions, suggestions or pull requests, visit the GitHub page&nbsp;
+    a(href='https://github.com/eugene-bulkin/sched', target='_blank') here
+    | .
   button(ng-click='create()')
     | Create New Schedule
