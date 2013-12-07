@@ -22,7 +22,7 @@
         #classes.display-view
           .clsBox(ng-repeat='cls in classList', ng-style='getStyle(cls)', ng-click='clickClass(cls)', ng-controller='SchedClassCtrl', ng-show='isShown(cls)')
             span
-              b {{cls.name}}
+              b {{cls.name || 'N/A'}}
               br
               | {{cls.location || 'TBD'}}
               br
