@@ -11,5 +11,6 @@
       ul
         sched-menu-link(ng-repeat='class in classes', id='cls-{{$index}}')
         li.new-class(ng-click='addClass()') Add a New Class
+        li.new-class(ng-click='addEvent()') Add a New Event
     #class-forms
       sched-menu-form(ng-repeat='class in classes', id='cls-frm-{{$index}}')

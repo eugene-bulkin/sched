@@ -142,6 +142,7 @@ schedMenuTimeForm = () ->
     replace: true,
     templateUrl: templateDir + 'menuTimeForm.html',
     link: (scope, element, attrs) ->
+      scope.clsType = scope.$parent.class.clsType
       scope.toggleDay = (day) ->
         scope.time.days[day] = !scope.time.days[day]
   }

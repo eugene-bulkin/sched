@@ -5,11 +5,14 @@
     form
       .generalInfo
         table
-          tr
+          tr(ng-if='class.clsType == "class"')
             td(colspan=4)
               input(type='text', name='clsName', ng-model='class.name', placeholder='Class name')
             td(colspan=2)
               input(type='text', name='clsSect', ng-model='class.section', placeholder='Section')
+          tr(ng-if='class.clsType == "event"')
+            td(colspan=6)
+              input(type='text', name='clsName', ng-model='class.name', placeholder='Event name')
           tr
             td(colspan=2)
               color-picker-button(ng-model='class.color')
