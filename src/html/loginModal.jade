@@ -8,10 +8,10 @@
           .left
             form(ng-submit='processLogin()', name='loginForm')
               label
-                | Username:
+                span Username
                 input.login-username(ng-model='username', type='text')
               label
-                | Password:
+                span Password
                 input(ng-model='password', type='password')
               button(type='submit') Log In
             .error(ng-if='errorMsg') {{errorMsg}}
@@ -24,10 +24,10 @@
           .left
             form(ng-submit='processRegister()', name='registerForm')
               label
-                | Username:
+                span Username
                 input.login-username(ng-model='username', type='text', ng-pattern='/^[a-zA-Z0-9_]+$/', required='required', user-exists='user-exists')
               label
-                | Password:
+                span Password
                 input(ng-model='password', type='password', required='required', ng-minlength='4')
               button(type='submit', ng-disabled='register.$invalid') Register
             .error(ng-if='errorMsg') {{errorMsg}}

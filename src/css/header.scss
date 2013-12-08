@@ -145,6 +145,44 @@
   width: 100%;
   height: 100%;
   padding: 40px;
+  form button {
+    display: block;
+    @include flat-button-colors($c-triad1);
+    padding: .5em 3em;
+    width: 80%;
+    font-size: 1.75rem;
+    color: #fafafa;
+    margin: 1em auto;
+    cursor: pointer;
+    border-radius: 0.25em;
+  }
+  label {
+    display: block;
+    margin: 0.5rem 0;
+    span {
+      width: 40%;
+      display: inline-block;
+      text-align: right;
+      padding-right: 0.5em;
+      font-size: 1.75rem;
+      font-weight: bold;
+      &::after {
+        content: ":";
+      }
+    }
+    input {
+      width: 55%;
+      border: 1px solid #ccc;
+      color: #ccc;
+      padding: 0.5rem 0.75rem;
+      font-size: 1.75rem;
+      border-radius: 0.75rem;
+      &:focus {
+        border-color: $c-triad1;
+        color: $c-1-darkest;
+      }
+    }
+  }
   .left, .right {
     width: 50%;
     height: 100%;
