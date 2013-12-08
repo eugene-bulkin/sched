@@ -65,10 +65,24 @@ SchedMenuCtrl = ($scope) ->
        section: null,
        color: "#888",
        enabled: true,
+       clsType: 'class',
        times: []
     }
     $scope.classes.push(obj)
     return
+
+  $scope.addEvent = () ->
+    obj = {
+       name: "",
+       section: null,
+       color: "#888",
+       enabled: true,
+       clsType: 'event',
+       times: []
+    }
+    $scope.classes.push(obj)
+    return
+
   return
 
 ###
@@ -134,6 +148,7 @@ SchedDisplayCtrl = ($scope) ->
             name: cls.name,
             section: cls.section,
             enabled: cls.enabled,
+            clsType: cls.clsType,
             start: time.start,
             end: time.end,
             location: time.location,

@@ -3,7 +3,7 @@ div
   | to
   input.timeInput(type='text', name='clsTimeTo', ng-model='time.end', time-picker)
   br
-  input(type='text', name='clsInstructor', placeholder='Instructor', ng-model='time.instructor')
+  input(type='text', name='clsInstructor', placeholder='Instructor', ng-model='time.instructor', ng-if='clsType == "class"')
   input(type='text', name='clsLocation', placeholder='Location', ng-model='time.location')
   .dayButtons
     button(type='button', ng-repeat='day in "12345".split("")', ng-class='(time.days[day]) ? \'selected\' : \'\'', ng-click='toggleDay(day)')

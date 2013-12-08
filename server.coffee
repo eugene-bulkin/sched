@@ -24,6 +24,7 @@ scheduleSchema = Schema {
       section: String,
       color: String,
       enabled: Boolean,
+      clsType: String,
       times: [
         {
           days: {
