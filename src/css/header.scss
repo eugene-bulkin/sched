@@ -62,6 +62,7 @@
     @include missing-corners(2em, top-left, top-right);
     img {
       height: 100%;
+      cursor: pointer;
     }
   }
 }
