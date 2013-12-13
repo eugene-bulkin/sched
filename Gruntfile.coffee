@@ -77,6 +77,10 @@ module.exports = (grunt) ->
       # supposedly being removed at some point, so we remove them manually
       removeJS: {
         command: 'rm src/js/*.js'
+      },
+      # Remove docs (only in production)
+      removeDocs: {
+        command: 'doc/'
       }
     },
     ngmin: {
@@ -180,8 +184,10 @@ module.exports = (grunt) ->
       if prod then tasks.push 'csso'
     if 'jade' not in args
       tasks.push 'jade'
-    if 'doc' not in args
+    # don't generate docs if in production!
+    if 'doc' not in args and not prod
       tasks.push 'shell:codo'
+    if prod then tasks.push 'shell:removeDocs'
     grunt.task.run tasks
   )
 
