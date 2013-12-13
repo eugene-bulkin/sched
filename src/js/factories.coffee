@@ -39,6 +39,6 @@ User = ($http) ->
   }
 
 angular.module('sched.factories', [])
-  .factory('Schedule', Schedule)
-  .factory('Login', Login)
-  .factory('User', User)
+  .factory('Schedule', ['$http', Schedule])
+  .factory('Login', ['$http', Login])
+  .factory('User', ['$http', User])

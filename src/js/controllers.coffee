@@ -34,7 +34,7 @@ The schedule app controller. Keeps track of classes.
 @param [Object] $scope
 @param [Array] classes The classes loaded by the Schedule factory
 ###
-SchedCtrl = ($scope, $rootScope, sched, currentUser) ->
+SchedCtrl = ($scope, sched, currentUser) ->
   $scope.sched = sched
   $scope.classes = sched.classes
   $scope.modified = false
@@ -239,10 +239,10 @@ SchedHeaderCtrl = ($scope, $location, Login) ->
         $scope.errorMsg = error.data
 
 angular.module('sched.controllers', [])
-  .controller('HomeCtrl', HomeCtrl, ['$scope', '$location'])
-  .controller('UserCtrl', UserCtrl, ['$scope', '$location'])
-  .controller('SchedCtrl', SchedCtrl, ['$scope'])
-  .controller('SchedMenuCtrl', SchedMenuCtrl, ['$scope'])
-  .controller('SchedClassCtrl', SchedClassCtrl, ['$scope'])
-  .controller('SchedDisplayCtrl', SchedDisplayCtrl, ['$scope'])
-  .controller('SchedHeaderCtrl', SchedHeaderCtrl, ['$scope', '$location', 'Login'])
+  .controller('HomeCtrl', ['$scope', '$location', 'currentUser', HomeCtrl])
+  .controller('UserCtrl', ['$scope', '$location', 'resolveData', UserCtrl])
+  .controller('SchedCtrl', ['$scope', 'sched', 'currentUser', SchedCtrl])
+  .controller('SchedMenuCtrl', ['$scope', SchedMenuCtrl])
+  .controller('SchedClassCtrl', ['$scope', SchedClassCtrl])
+  .controller('SchedDisplayCtrl', ['$scope', SchedDisplayCtrl])
+  .controller('SchedHeaderCtrl', ['$scope', '$location', 'Login', SchedHeaderCtrl])

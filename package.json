@@ -8,15 +8,18 @@
   },
   "devDependencies": {
     "grunt": "*",
+    "grunt-coffeelint": "*",
+    "grunt-concurrent": "*",
     "grunt-nodemon": "*",
+    "grunt-ngmin": "*",
+    "grunt-shell": "*",
     "grunt-contrib-coffee": "*",
     "grunt-contrib-sass": "*",
     "grunt-contrib-jade": "*",
-    "grunt-coffeelint": "*",
-    "nodemon": "*",
-    "grunt-concurrent": "*",
+    "grunt-contrib-uglify": "*",
     "grunt-contrib-watch": "*",
-    "grunt-shell": "*",
+    "grunt-bg-shell": "*",
+    "nodemon": "*",
     "bcrypt-nodejs": "*"
   }
 }

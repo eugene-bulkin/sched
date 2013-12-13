@@ -3,10 +3,6 @@ module.exports = (grunt) ->
   grunt.initConfig {
     pkg: grunt.file.readJSON('package.json'),
     # monitoring
-    concurrent: {
-      dev: ['nodemon:dev', 'watch']
-      production: ['nodemon:production']
-    },
     nodemon: {
       dev: {
         options: {
@@ -67,6 +63,23 @@ module.exports = (grunt) ->
         command: 'rm src/js/*.js'
       }
     },
+    ngmin: {
+      script: {
+        src: ['app/build/sched.js'],
+        dest: 'app/build/sched.js'
+      }
+    },
+    uglify: {
+      script: {
+        files: {
+          'app/build/sched.js': ['app/build/sched.js']
+        },
+        sourceMapIn: 'app/build/sched.js.map',
+        options: {
+          mangle: false
+        }
+      }
+    }
     # compilation
     sass: {
       dist: {
@@ -129,12 +142,17 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks('grunt-contrib-coffee')
   grunt.loadNpmTasks('grunt-contrib-jade')
   grunt.loadNpmTasks('grunt-shell')
+  grunt.loadNpmTasks('grunt-ngmin')
+  grunt.loadNpmTasks('grunt-contrib-uglify')
+  grunt.loadNpmTasks('grunt-bg-shell')
 
   grunt.registerTask('compile', (args...) ->
     tasks = []
     # additional ones remove from compilation
     if 'coffee' not in args
       tasks = tasks.concat ['coffeelint', 'coffee', 'shell:removeJS']
+      if 'production' in args
+        tasks = tasks.concat ['ngmin', 'uglify']
     if 'sass' not in args
       tasks.push 'sass'
     if 'jade' not in args
@@ -143,5 +161,6 @@ module.exports = (grunt) ->
       tasks.push 'shell:codo'
     grunt.task.run tasks
   )
-  grunt.registerTask('default', ['compile', 'concurrent:dev'])
-  grunt.registerTask('production', ['compile', 'concurrent:production'])
+
+  grunt.registerTask('default', ['compile', 'nodemon:dev'])
+  grunt.registerTask('production', ['compile:production', 'nodemon:production'])
