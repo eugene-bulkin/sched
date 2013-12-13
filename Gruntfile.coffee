@@ -80,7 +80,7 @@ module.exports = (grunt) ->
       },
       # Remove docs (only in production)
       removeDocs: {
-        command: 'doc/'
+        command: 'rm doc/'
       }
     },
     ngmin: {
