@@ -57,13 +57,6 @@
   }
 }
 
-@mixin trans($rules...) {
-  -webkit-transition: $rules;
-  -moz-transition: $rules;
-  -o-transition: $rules;
-  transition: $rules;
-}
-
 @mixin missing-corners($radius, $corners...) {
   border-radius: $radius;
   @each $corner in $corners {

@@ -1,6 +1,6 @@
 .login-screen {
   &.ng-enter, &.ng-leave {
-    @include trans(left ease-in-out 0.75s);
+    transition: left ease-in-out 0.75s;
   }
 
   &.ng-enter {

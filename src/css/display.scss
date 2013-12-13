@@ -142,7 +142,7 @@ $time-height: 25px;
     padding-right: 1em;
     height: 6em;
     cursor: pointer;
-    @include trans(0.3s ease-in-out);
+    transition: 0.3s ease-in-out;
     @include missing-corners(1.5em, top-left, bottom-left);
     svg {
       width: 100%;

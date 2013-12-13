@@ -3,7 +3,7 @@ $menu-t-time: 0.3s;
 $menu-t-type: ease-in-out;
 
 #menuicon {
-  @include trans($menu-t-time $menu-t-type);
+  transition: $menu-t-time $menu-t-type;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -33,13 +33,13 @@ $menu-t-type: ease-in-out;
     height: 100%;
     rect {
       stroke: $c-primary;
-      @include trans($menu-t-time $menu-t-type);
+      transition: $menu-t-time $menu-t-type;
     }
   }
 }
 
 .menu-screen {
-  @include trans($menu-t-time $menu-t-type);
+  transition: $menu-t-time $menu-t-type;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -79,7 +79,7 @@ $menu-t-type: ease-in-out;
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
       margin: 0.5em 0;
-      @include trans($menu-t-time / 3 $menu-t-type);
+      transition: $menu-t-time / 3 $menu-t-type;
       position: relative;
       &:hover {
         cursor: pointer;
